@@ -159,12 +159,12 @@ function neuesFormularfeld() {
 }
 
 // V
-// Elemente abrufen 
+// Elemente abrufen
 
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
-    
+
     // get head information
     var vivaTitle = document.getElementById("inputVivaTitle").value;
     var vivaListe = document.getElementById("inputVivaListe").value;
@@ -172,24 +172,24 @@ function elementeAbrufen() {
     var vivaPreviewHeight = document.getElementById("inputVivaPreviewHeight").value;
     var vivaFormWidth = document.getElementById("inputVivaFormWidth").value;
     var vivaProductDescription = document.getElementById("inputVivaProductDescription").value;
-    
-    var headText = 
-        "&lt;viva:form rdf:parseType=\"Resource\"&gt;<br>" + 
-        "&ensp;&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
-        "&ensp;&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" + 
-        "&ensp;&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" + 
-        "&ensp;&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
-        "&ensp;&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
-        "&ensp;&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
-        "&ensp;&ensp;&ensp;&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
-        "&ensp;&ensp;&ensp;&ensp;&lt;viva:fields&gt;<br>" +
-        "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:Seq&gt;<br>";
-    
+
+    var headText =
+        "&lt;viva:form rdf:parseType=\"Resource\"&gt;<br>" +
+        "&#32;&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
+        "&#32;&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" +
+        "&#32;&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" +
+        "&#32;&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
+        "&#32;&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
+        "&#32;&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
+        "&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
+        "&#32;&#32;&#32;&#32;&lt;viva:fields&gt;<br>" +
+        "&#32;&#32;&#32;&#32;&#32;&lt;rdf:Seq&gt;<br>";
+
     // define xml-closing information
-    var closingText = 
-        "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:Seq&gt;<br>" +
-        "&ensp;&ensp;&ensp;&ensp;&lt;/viva:fields&gt;<br>" +
-        "&ensp;&ensp;&ensp;&lt;/rdf:value&gt;<br>" +
+    var closingText =
+        "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:Seq&gt;<br>" +
+        "&#32;&#32;&#32;&#32;&lt;/viva:fields&gt;<br>" +
+        "&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
         "&lt;/viva:form&gt;";
 
     // loop through all user created form-fields
@@ -222,29 +222,29 @@ function elementeAbrufen() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
             var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
             var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
-            inputfieldText += 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:value&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt;<br>";
+            inputfieldText +=
+                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
 
         // create xml-output for hiddenform
         function createHiddenOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
             var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            inputfieldText += 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>hidden</span>&lt;/viva:type&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt;<br>";
+            inputfieldText +=
+                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>hidden</span>&lt;/viva:type&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
-        
+
         // create xml-output for emailform
         function createEmailOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -253,18 +253,18 @@ function elementeAbrufen() {
             var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
             // var getVivaHelp = formAbrufen[i].getElementsByTagName("input")[4].value;
             var getVivaAlign = formAbrufen[i].getElementsByTagName("input")[3].value;
-            inputfieldText += 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>email</span>&lt;/viva:type&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" + 
-                // "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:pattern&gt;<span>" + getVivaPattern + "</span>&lt;/viva:pattern&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                // "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:align&gt;<span>" + getVivaAlign + "</span>&lt;/viva:align&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:value&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt;<br>";
+            inputfieldText +=
+                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>email</span>&lt;/viva:type&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
+                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:pattern&gt;<span>" + getVivaPattern + "</span>&lt;/viva:pattern&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
+                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:align&gt;<span>" + getVivaAlign + "</span>&lt;/viva:align&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
 
         // create xml-output for textareaform
@@ -276,19 +276,19 @@ function elementeAbrufen() {
             var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[4].value;
             // var getVivaDescription = formAbrufen[i].getElementsByTagName("input")[5].value;
             // var getVivaHelp = formAbrufen[i].getElementsByTagName("input")[6].value;
-            inputfieldText += 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>textarea</span>&lt;/viva:type&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:textrows&gt;<span>" + getVivaTextrows + "</span>&lt;/viva:textrows&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:textchars&gt;<span>" + getVivaTextchars + "</span>&lt;/viva:textchars&gt;<br>" + 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                // "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:description&gt;<span>" + getVivaDescription + "</span>&lt;/viva:description&gt;<br>" +
-                // "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:value&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt;<br>";
+            inputfieldText +=
+                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>textarea</span>&lt;/viva:type&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:textrows&gt;<span>" + getVivaTextrows + "</span>&lt;/viva:textrows&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:textchars&gt;<span>" + getVivaTextchars + "</span>&lt;/viva:textchars&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
+                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:description&gt;<span>" + getVivaDescription + "</span>&lt;/viva:description&gt;<br>" +
+                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
 
         // create xml-output for selectform
@@ -299,28 +299,28 @@ function elementeAbrufen() {
             var getVivaTitle02 = formAbrufen[i].getElementsByTagName("input")[3].value;
             var getVivaValue02 = formAbrufen[i].getElementsByTagName("input")[4].value;
             var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[5].value;
-            inputfieldText += 
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>select</span>&lt;/viva:type&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:options&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:Seq&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:title&gt<span>" + getVivaTitle01 + "</span>&lt;/viva:title&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value&gt<span>" + getVivaValue01 + "</span>&lt;/rdf:value&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:title&gt<span>" + getVivaTitle02 + "</span>&lt;/viva:title&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;rdf:value&gt<span>" + getVivaValue02 + "</span>&lt;/rdf:value&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:Seq&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/viva:options&gt<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:value&gt;<br>" +
-                "&ensp;&ensp;&ensp;&ensp;&ensp;&lt;/rdf:li&gt;<br>";
+            inputfieldText +=
+                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>select</span>&lt;/viva:type&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:options&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:Seq&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:title&gt<span>" + getVivaTitle01 + "</span>&lt;/viva:title&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value&gt<span>" + getVivaValue01 + "</span>&lt;/rdf:value&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:title&gt<span>" + getVivaTitle02 + "</span>&lt;/viva:title&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value&gt<span>" + getVivaValue02 + "</span>&lt;/rdf:value&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:Seq&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/viva:options&gt<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
+                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
-    } 
+    }
 
     document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
 }
