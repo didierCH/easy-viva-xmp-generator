@@ -177,22 +177,23 @@ function elementeAbrufen() {
     // write head information
     var headText =
         "&lt;viva:form rdf:parseType=\"Resource\"&gt;<br>" +
-        "&#32;&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
-        "&#32;&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" +
-        "&#32;&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" +
-        "&#32;&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
-        "&#32;&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
-        "&#32;&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
-        "&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
-        "&#32;&#32;&#32;&#32;&lt;viva:fields&gt;<br>" +
-        "&#32;&#32;&#32;&#32;&#32;&lt;rdf:Seq&gt;<br>";
+        lz + "&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
+        lz + "&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" +
+        lz + "&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" +
+        lz + "&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
+        lz + "&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
+        lz + "&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
+        // ATTENTION repeat only works in modern browser an not in ie
+        lz.repeat(3) + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
+        lz.repeat(4) + "&lt;viva:fields&gt;<br>" +
+        lz.repeat(5) + "&lt;rdf:Seq&gt;<br>";
 
     // write xml-closing information
     var closingText =
-        "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:Seq&gt;<br>" +
-        "&#32;&#32;&#32;&#32;&lt;/viva:fields&gt;<br>" +
-        "&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
-        "&lt;/viva:form&gt;";
+        lz.repeat(5) + "&lt;/rdf:Seq&gt;<br>" +
+        lz.repeat(4) + "&lt;/viva:fields&gt;<br>" +
+        lz.repeat(3) + "&lt;/rdf:value&gt;<br>" +
+        lz + "/viva:form&gt;";
 
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
