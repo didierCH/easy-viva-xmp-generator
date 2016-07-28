@@ -164,7 +164,9 @@ function neuesFormularfeld() {
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
-    var lz = "&#32;"
+    var lz2 = "&#32;&#32;"
+    var lz4 = "&#32;&#32;&#32;&#32;"
+    var lz6 = "&#32;&#32;&#32;&#32;&#32;&#32;"
 
     // get head information
     var vivaTitle = document.getElementById("inputVivaTitle").value;
@@ -177,23 +179,23 @@ function elementeAbrufen() {
     // write head information
     var headText =
         "&lt;viva:form rdf:parseType=\"Resource\"&gt;<br>" +
-        lz + "&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
-        lz + "&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" +
-        lz + "&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" +
-        lz + "&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
-        lz + "&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
-        lz + "&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
-        // ATTENTION repeat only works in modern browser an not in ie
-        lz.repeat(3) + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
-        lz.repeat(4) + "&lt;viva:fields&gt;<br>" +
-        lz.repeat(5) + "&lt;rdf:Seq&gt;<br>";
+        lz2 + "&lt;viva:title&gt;<span>" + vivaTitle + "</span>&lt/viva:title&gt;<br>" +
+        lz2 + "&lt;viva:listeAnzeigen&gt;<span>" + vivaListe + "</span>&lt;/viva:listeAnzeigen&gt;<br>" +
+        lz2 + "&lt;viva:previewWidth&gt;<span>" + vivaPreviewWidth + "</span>&lt/viva:previewWidth&gt;<br>" +
+        lz2 + "&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
+        lz2 + "&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
+        lz2 + "&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
+        // posible to dublicate variable with repeat (ECMA Script 6 only): lz.repeat(3)
+        lz2 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
+        lz4 + "&lt;viva:fields&gt;<br>" +
+        lz2 + lz4 + "&lt;rdf:Seq&gt;<br>";
 
     // write xml-closing information
     var closingText =
-        lz.repeat(5) + "&lt;/rdf:Seq&gt;<br>" +
-        lz.repeat(4) + "&lt;/viva:fields&gt;<br>" +
-        lz.repeat(3) + "&lt;/rdf:value&gt;<br>" +
-        lz + "/viva:form&gt;";
+        lz2 + lz4 + "&lt;/rdf:Seq&gt;<br>" +
+        lz4 + "&lt;/viva:fields&gt;<br>" +
+        lz2 + "&lt;/rdf:value&gt;<br>" +
+        "&lt;/viva:form&gt;";
 
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
