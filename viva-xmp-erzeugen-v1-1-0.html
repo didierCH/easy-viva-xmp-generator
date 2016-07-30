@@ -90,30 +90,34 @@ function neuesFormularfeld() {
 
     switch (valueNF) {
         case "text":
-            var formClassName = "text";
-            var h3HeaderTitle = "Textfeld";
-            var inputFields = ["name", "default", "label"];
-            var setAttributName = ["name", "default", "label"];
+            var formClassName = "text"; // 1.
+            var h3HeaderTitle = "Textfeld"; // 2.
+            var inputFields = ["name", "default", "label"]; // 3. und 4. (wird auch für das Attribut name verwendet
+            var inputValue = ["", "", ""]; // 5.
             break;
         case "hidden":
             var formClassName = "hidden";
             var h3HeaderTitle = "Verstecktes Feld";
             var inputFields = ["name", "default"];
+            var inputValue = ["", ""]
             break;
         case "email":
             var formClassName = "email";
             var h3HeaderTitle = "E-Mail-Feld";
             var inputFields = ["name", "default", "label", "align"];
+            var inputValue = ["", "", "", ""];
             break;
         case "textarea":
             var formClassName = "textarea";
             var h3HeaderTitle = "Mehrzeiliges Formularfeld";
             var inputFields = ["name", "default", "textrows", "textchars", "label"];
+            var inputValue = ["", "", "", "", ""];
             break;
         case "select":
             var formClassName = "select";
             var h3HeaderTitle = "Auswahlfeld";
             var inputFields = ["name", "title", "value", "title", "value", "label"];
+            var inputValue = ["", "", "", "", "", ""];
             break;
         default:
             result = "text";
@@ -121,14 +125,14 @@ function neuesFormularfeld() {
 
     // create form-element
     var form = document.createElement("FORM");
-        form.setAttribute("class", formClassName);
+        form.setAttribute("class", formClassName); //1.
 
     // append new formelement with content to div formularfelder
     document.getElementById("formularfelder").appendChild(form);
 
     // create header element
     var header = document.createElement("h3");
-        headerText = document.createTextNode(h3HeaderTitle);
+        headerText = document.createTextNode(h3HeaderTitle); // 2.
         form.appendChild(header);
         header.appendChild(headerText);
 
@@ -137,15 +141,14 @@ function neuesFormularfeld() {
 
     // create input field
         var inputLabel = document.createElement("label");
-        var text = document.createTextNode("viva: " + inputFields[i]); // 1.
+        var text = document.createTextNode("viva: " + inputFields[i]); // 3.
             form.appendChild(inputLabel);
             inputLabel.appendChild(text);
 
         var formName = document.createElement("input");
             formName.setAttribute("type", "text");
-            formName.setAttribute("name", setAttributName[i]); // 2.
-            formName.setAttribute("value", ""); // 3.
-            formName.setAttribute("class", "inputElement vivaName"); // 4.
+            formName.setAttribute("name", inputFields[i]); // 4.
+            formName.setAttribute("value", inputValue[i]); // 5.
             form.appendChild(formName);
 
         var br = document.createElement("br");
