@@ -5,7 +5,7 @@
 * <del>Clipboard
 * <del>Formularfeld "Auswahlliste" erstellen
 * <del>Vergleich von XML-Ausgabe mit Vorlage von Printplus
-* Test in <del> Chrome, Firefox
+* <del>Test in Chrome, Firefox
 * <del>Redundanten CSS-Code entfernen
 * <del> Versionierung bestimmen
 
@@ -19,10 +19,10 @@
 
 ## V1.1.0
 ### Programmierung
+* Redundanten Code entfernen
 * Optionale input-Felder hinzufügen (help, description, etc.)
 * Formularfelder nach oben oder unten verschieben
 * Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
-* Redundanten Code entfernen
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
 * Einzelne Leerschläge mit Variable ersetzen
