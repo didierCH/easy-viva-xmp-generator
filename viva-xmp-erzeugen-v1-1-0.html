@@ -77,7 +77,7 @@
     <textarea placeholder="Clipboard ..." rows="3"></textarea>
     <h3>XMP-Datei:</h3>
     <pre id="ausgabefeld"></pre>
-    <p id="version">V.1.1.0<br>13.07.2016</p>
+    <p id="version">V.1.1.0<br>02.08.2016</p>
     </div> <!-- end of xmlAusgabe -->
     </div> <!-- end of wrapper -->
 
@@ -92,7 +92,7 @@ function neuesFormularfeld() {
         case "text":
             var formClassName = "text"; // 1.
             var h3HeaderTitle = "Textfeld"; // 2.
-            var inputFields = ["name", "default", "label"]; // 3. und 4. (wird auch für das Attribut name verwendet
+            var inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
             var inputValue = ["", "", ""]; // 5.
             break;
         case "hidden":
@@ -125,7 +125,7 @@ function neuesFormularfeld() {
 
     // create form-element
     var form = document.createElement("FORM");
-        form.setAttribute("class", formClassName); //1.
+        form.setAttribute("class", formClassName); // 1.
 
     // append new formelement with content to div formularfelder
     document.getElementById("formularfelder").appendChild(form);
@@ -170,6 +170,7 @@ function elementeAbrufen() {
     var lz2 = "&#32;&#32;"
     var lz4 = "&#32;&#32;&#32;&#32;"
     var lz6 = "&#32;&#32;&#32;&#32;&#32;&#32;"
+    var lz8 = "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;"
 
     // get head information
     var vivaTitle = document.getElementById("inputVivaTitle").value;
@@ -231,14 +232,14 @@ function elementeAbrufen() {
             var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
             var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
             inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
+                lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                lz4 + lz6 + "&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
+                lz4 + lz6 + "&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
+                lz4 + lz6 + "&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
+                lz4 + lz6 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
+                lz6 + lz6 + "&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
+                lz4 + lz6 + "&lt;/rdf:value&gt;<br>" +
+                lz2 + lz6 + "&lt;/rdf:li&gt;<br>";
         }
 
         // create xml-output for hiddenform
