@@ -105,7 +105,7 @@ function neuesFormularfeld() {
             var formClassName = "email";
             var h3HeaderTitle = "E-Mail-Feld";
             var inputFields = ["name", "default", "label", "align"];
-            var inputValue = ["", "", "", ""];
+            var inputValue = ["", "", "", "left"];
             break;
         case "textarea":
             var formClassName = "textarea";
@@ -137,23 +137,19 @@ function neuesFormularfeld() {
         header.appendChild(headerText);
 
 
-    for (i = 0; i < inputFields.length; i++) {
-
     // create input field
+    for (i = 0; i < inputFields.length; i++) {
         var inputLabel = document.createElement("label");
         var text = document.createTextNode("viva: " + inputFields[i]); // 3.
             form.appendChild(inputLabel);
             inputLabel.appendChild(text);
-
         var formName = document.createElement("input");
             formName.setAttribute("type", "text");
             formName.setAttribute("name", inputFields[i]); // 4.
             formName.setAttribute("value", inputValue[i]); // 5.
             form.appendChild(formName);
-
         var br = document.createElement("br");
             form.appendChild(br);
-
     }
 
     // append line after new created formelement
@@ -163,14 +159,13 @@ function neuesFormularfeld() {
 
 // IV
 // Elemente abrufen
-
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
-    var lz2 = "&#32;&#32;"
-    var lz4 = "&#32;&#32;&#32;&#32;"
-    var lz6 = "&#32;&#32;&#32;&#32;&#32;&#32;"
-    var lz8 = "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;"
+    var lz2 = "&#32;&#32;";
+    var lz4 = lz2 + lz2;
+    var lz6 = lz2 + lz4;
+    var lz8 = lz4 + lz4;
 
     // get head information
     var vivaTitle = document.getElementById("inputVivaTitle").value;
@@ -189,14 +184,13 @@ function elementeAbrufen() {
         lz2 + "&lt;viva:previewHeight&gt;<span>" + vivaPreviewHeight + "</span>&lt/viva:previewHeight&gt;<br>" +
         lz2 + "&lt;viva:formWidth&gt;<span>" + vivaFormWidth + "</span>&lt/viva:formWidth&gt;<br>" +
         lz2 + "&lt;viva:productDescription&gt;<span>" + vivaProductDescription + "</span>&lt/viva:productDescription&gt<br>" +
-        // posible to dublicate variable with repeat (ECMA Script 6 only): lz.repeat(3)
         lz2 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
         lz4 + "&lt;viva:fields&gt;<br>" +
-        lz2 + lz4 + "&lt;rdf:Seq&gt;<br>";
+        lz6 + "&lt;rdf:Seq&gt;<br>";
 
     // write xml-closing information
     var closingText =
-        lz2 + lz4 + "&lt;/rdf:Seq&gt;<br>" +
+        lz6 + "&lt;/rdf:Seq&gt;<br>" +
         lz4 + "&lt;/viva:fields&gt;<br>" +
         lz2 + "&lt;/rdf:value&gt;<br>" +
         "&lt;/viva:form&gt;";
