@@ -19,13 +19,13 @@
 
 ## V1.1.0
 ### Programmierung
-* Redundanten Code entfernen
+* Redundanten Code entfernen (XML-Code-Generierung mit Loop und Weiche gestalten)
 * Optionale input-Felder hinzufügen (help, description, etc.)
 * Formularfelder nach oben oder unten verschieben
 * Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
-* Einzelne Leerschläge mit Variable ersetzen
+* <del>Einzelne Leerschläge mit Variable ersetzen
 
 ### Design
 * Tooltips mit Beschreibung der Funktionen einfügen
