@@ -198,11 +198,13 @@ function elementeAbrufen() {
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
+        
+        var inputfieldText;
 
         // decide which function to use determined through class name
         switch (getClassName) {
         case "text":
-            createTextOutput();
+            var xmlVivaType = "text";
             break;
         case "hidden":
             createHiddenOutput();
@@ -220,6 +222,12 @@ function elementeAbrufen() {
             result = "Meine Form hat keine Klasse! <br>";
         }
 
+        // creat xml-output
+            inputfieldText +=
+                lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                lz4 + lz6 + "&lt;viva:type&gt;<span>" + xmlVivaType + "</span>&lt;/viva:type&gt;<br>"; 
+
+        /*
         // create xml-output for textform
         function createTextOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -235,7 +243,9 @@ function elementeAbrufen() {
                 lz4 + lz6 + "&lt;/rdf:value&gt;<br>" +
                 lz2 + lz6 + "&lt;/rdf:li&gt;<br>";
         }
+        */
 
+        /*
         // create xml-output for hiddenform
         function createHiddenOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -247,7 +257,9 @@ function elementeAbrufen() {
                 "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
                 "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
+        */
 
+        /*
         // create xml-output for emailform
         function createEmailOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -269,7 +281,9 @@ function elementeAbrufen() {
                 "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
                 "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
+        */
 
+        /*
         // create xml-output for textareaform
         function createTextareaOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -293,7 +307,9 @@ function elementeAbrufen() {
                 "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
                 "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
+        */
 
+        /*
         // create xml-output for selectform
         function createSelectOutput() {
             var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
@@ -323,6 +339,7 @@ function elementeAbrufen() {
                 "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
                 "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
         }
+        */
     }
 
     document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
