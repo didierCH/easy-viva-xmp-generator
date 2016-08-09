@@ -197,10 +197,12 @@ function elementeAbrufen() {
 
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
+        var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
         var getClassName = formAbrufen[i].className;
         
         var inputfieldText;
 
+        /*
         // decide which function to use determined through class name
         switch (getClassName) {
         case "text":
@@ -217,15 +219,18 @@ function elementeAbrufen() {
             break;
         case "select":
             createSelectOutput();
-            break;
+            break;/*
         default:
             result = "Meine Form hat keine Klasse! <br>";
         }
+        */
+        
 
+        inputfieldText += inputAbrufen.length;
         // creat xml-output
-            inputfieldText +=
-                lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:type&gt;<span>" + xmlVivaType + "</span>&lt;/viva:type&gt;<br>"; 
+        //    inputfieldText +=
+        //        lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+        //        lz4 + lz6 + "&lt;viva:type&gt;<span>" + xmlVivaType + "</span>&lt;/viva:type&gt;<br>"; 
 
         /*
         // create xml-output for textform
