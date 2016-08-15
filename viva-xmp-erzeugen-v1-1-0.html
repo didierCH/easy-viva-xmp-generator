@@ -162,6 +162,7 @@ function neuesFormularfeld() {
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
+    var xmlOutput = "";
     var lz2 = "&#32;&#32;";
     var lz4 = lz2 + lz2;
     var lz6 = lz2 + lz4;
@@ -198,189 +199,31 @@ function elementeAbrufen() {
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
-        
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
 
         // loop through all input-fields inside form-fields
         for (i = 0; i < inputAbrufen.length; i++) {
             var getInputNameValue = inputAbrufen[i].name;
 
-        //    var inputfieldText;
-        //    inputfieldText += getInputNameValue + "<br>";
+            // decide which function to use determined through class name
+            switch (getInputNameValue) {
+            case "name":
+                var xmlVivaType = "text<br>";
+                break;
+            case "default":
+                var xmlVivaType = "default<br>";
+                break;
+            case "label":
+                var xmlVivaType = "label<br>";
+                break;
+            default:
+                result = "Meine Form hat keine Klasse! <br>";
+            }
 
-        // decide which function to use determined through class name
-        switch (getInputNameValue) {
-        case "name":
-            var xmlVivaType = "text";
-            break;
-        case "default":
-            createHiddenOutput();
-            break;
-        case "label":
-            createEmailOutput();
-            break;
-        default:
-            result = "Meine Form hat keine Klasse! <br>";
-        }
-        
-        // create xml-output for textform
-        function createTextOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
-            inputfieldText +=
-                lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                lz4 + lz6 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                lz6 + lz6 + "&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                lz4 + lz6 + "&lt;/rdf:value&gt;<br>" +
-                lz2 + lz6 + "&lt;/rdf:li&gt;<br>";
+            xmlOutput += xmlVivaType;
         }
 
-        // create xml-output for hiddenform
-        function createHiddenOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>hidden</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
-        }
-        }
-        
-
-        /*
-        // decide which function to use determined through class name
-        switch (getClassName) {
-        case "text":
-            var xmlVivaType = "text";
-            break;
-        case "hidden":
-            createHiddenOutput();
-            break;
-        case "email":
-            createEmailOutput();
-            break;
-        case "textarea":
-            createTextareaOutput();
-            break;
-        case "select":
-            createSelectOutput();
-            break;/*
-        default:
-            result = "Meine Form hat keine Klasse! <br>";
-        }
-        */
-        
-        /*
-        // create xml-output for textform
-        function createTextOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
-            inputfieldText +=
-                lz2 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:type&gt;<span>text</span>&lt;/viva:type&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                lz4 + lz6 + "&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                lz4 + lz6 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                lz6 + lz6 + "&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                lz4 + lz6 + "&lt;/rdf:value&gt;<br>" +
-                lz2 + lz6 + "&lt;/rdf:li&gt;<br>";
-        }
-
-        // create xml-output for hiddenform
-        function createHiddenOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>hidden</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
-        }
-
-        // create xml-output for emailform
-        function createEmailOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            // var getVivaPattern = formAbrufen[i].getElementsByTagName("input")[2].value;
-            var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[2].value;
-            // var getVivaHelp = formAbrufen[i].getElementsByTagName("input")[4].value;
-            var getVivaAlign = formAbrufen[i].getElementsByTagName("input")[3].value;
-            inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>email</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:pattern&gt;<span>" + getVivaPattern + "</span>&lt;/viva:pattern&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:align&gt;<span>" + getVivaAlign + "</span>&lt;/viva:align&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
-        }
-
-        // create xml-output for textareaform
-        function createTextareaOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaDefault = formAbrufen[i].getElementsByTagName("input")[1].value;
-            var getVivaTextrows = formAbrufen[i].getElementsByTagName("input")[2].value;
-            var getVivaTextchars = formAbrufen[i].getElementsByTagName("input")[3].value;
-            var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[4].value;
-            // var getVivaDescription = formAbrufen[i].getElementsByTagName("input")[5].value;
-            // var getVivaHelp = formAbrufen[i].getElementsByTagName("input")[6].value;
-            inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>textarea</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:default&gt;<span>" + getVivaDefault + "</span>&lt;/viva:default&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:textrows&gt;<span>" + getVivaTextrows + "</span>&lt;/viva:textrows&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:textchars&gt;<span>" + getVivaTextchars + "</span>&lt;/viva:textchars&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:description&gt;<span>" + getVivaDescription + "</span>&lt;/viva:description&gt;<br>" +
-                // "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:help&gt;<span>" + getVivaHelp + "</span>&lt;/viva:help&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
-        }
-
-        // create xml-output for selectform
-        function createSelectOutput() {
-            var getVivaName = formAbrufen[i].getElementsByTagName("input")[0].value;
-            var getVivaTitle01 = formAbrufen[i].getElementsByTagName("input")[1].value;
-            var getVivaValue01 = formAbrufen[i].getElementsByTagName("input")[2].value;
-            var getVivaTitle02 = formAbrufen[i].getElementsByTagName("input")[3].value;
-            var getVivaValue02 = formAbrufen[i].getElementsByTagName("input")[4].value;
-            var getVivaLabel = formAbrufen[i].getElementsByTagName("input")[5].value;
-            inputfieldText +=
-                "&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:type&gt;<span>select</span>&lt;/viva:type&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:name&gt;<span>" + getVivaName + "</span>&lt;/viva:name&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:options&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:Seq&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:title&gt<span>" + getVivaTitle01 + "</span>&lt;/viva:title&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value&gt<span>" + getVivaValue01 + "</span>&lt;/rdf:value&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:li rdf:parseType=\"Resource\"&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:title&gt<span>" + getVivaTitle02 + "</span>&lt;/viva:title&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;rdf:value&gt<span>" + getVivaValue02 + "</span>&lt;/rdf:value&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:Seq&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/viva:options&gt<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;viva:label&gt;<span>" + getVivaLabel + "</span>&lt;/viva:label&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;/rdf:value&gt;<br>" +
-                "&#32;&#32;&#32;&#32;&#32;&lt;/rdf:li&gt;<br>";
-        }
-        */
+        inputfieldText += xmlOutput;
     }
 
     document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
