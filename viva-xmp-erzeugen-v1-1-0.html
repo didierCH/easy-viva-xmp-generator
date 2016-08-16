@@ -198,12 +198,12 @@ function elementeAbrufen() {
 
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
-        var getClassName = formAbrufen[i].className;
+        // var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
 
         // loop through all input-fields inside form-fields
-        for (i = 0; i < inputAbrufen.length; i++) {
-            var getInputNameValue = inputAbrufen[i].name;
+        for (j = 0; j < inputAbrufen.length; j++) {
+            var getInputNameValue = inputAbrufen[j].name;
 
             // decide which function to use determined through class name
             switch (getInputNameValue) {
@@ -220,10 +220,10 @@ function elementeAbrufen() {
                 result = "Meine Form hat keine Klasse! <br>";
             }
 
-            xmlOutput += xmlVivaType;
+            xmlOutput += "tst" + xmlVivaType;
         }
 
-        inputfieldText += xmlOutput;
+        inputfieldText += "input " + xmlOutput;
     }
 
     document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
