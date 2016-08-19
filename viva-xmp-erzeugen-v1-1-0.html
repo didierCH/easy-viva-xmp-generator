@@ -198,7 +198,7 @@ function elementeAbrufen() {
 
     // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
-        // var getClassName = formAbrufen[i].className;
+        var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
 
         // loop through all input-fields inside form-fields
@@ -221,11 +221,12 @@ function elementeAbrufen() {
                 result = "Meine Form hat keine Klasse! <br>";
             }
 
-            //xmlOutput += "innen" + xmlVivaType;
-            inputfieldText += xmlVivaType;
+            xmlOutput += xmlVivaType;
+            //inputfieldText += xmlVivaType;
         }
 
-        //inputfieldText += "aussen " + xmlOutput + "<br>";
+        inputfieldText += 
+       "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&lt;viva:type&gt;<span>" + getClassName + "</span>&lt;/viva:type&gt;<br>" + xmlOutput;
         //inputfieldText += "aussen <br>";
     }
 
