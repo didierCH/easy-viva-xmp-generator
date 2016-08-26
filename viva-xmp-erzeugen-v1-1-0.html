@@ -162,7 +162,7 @@ function neuesFormularfeld() {
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
-    var inputOutput = "";
+    //var inputOutput = "";
     var formOutput = "";
     var lz2 = "&#32;&#32;";
     var lz4 = lz2 + lz2;
@@ -201,30 +201,32 @@ function elementeAbrufen() {
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
+        var inputOutput = "";
 
         // loop through all input-fields inside form-fields
         for (j = 0; j < inputAbrufen.length; j++) {
             var getInputNameValue = inputAbrufen[j].name;
             var getInputValue = inputAbrufen[j].value;
             var getClassNameForm = getClassName;
-            //var zaehler = j++;
+
 
             // decide which function to use determined through class name
             switch (getInputNameValue) {
             case "name":
-                var xmlVivaType = "name";
+                var xmlVivaType = "name <br>";
                 break;
             case "default":
-                var xmlVivaType = "default";
+                var xmlVivaType = "default <br>";
                 break;
             case "label":
-                var xmlVivaType = "label";
+                var xmlVivaType = "label <br>";
                 break;
             default:
                 var xmlVivaType = "Meine Form hat keine Klasse! <br>";
                 break;
             }
-            inputOutput += "input name: " + xmlVivaType + "<br>";
+
+            inputOutput += xmlVivaType;
 
         }
 
