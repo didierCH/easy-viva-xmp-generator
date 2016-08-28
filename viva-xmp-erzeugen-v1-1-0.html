@@ -168,6 +168,7 @@ function elementeAbrufen() {
     var lz4 = lz2 + lz2;
     var lz6 = lz2 + lz4;
     var lz8 = lz4 + lz4;
+    var lz10 = lz8 + lz2;
 
     // get head information
     var vivaTitle = document.getElementById("inputVivaTitle").value;
@@ -209,29 +210,39 @@ function elementeAbrufen() {
             var getInputValue = inputAbrufen[j].value;
             var getClassNameForm = getClassName;
 
-
-            // decide which function to use determined through class name
+            // decide which function to use determined through attribute name
             switch (getInputNameValue) {
-            case "name":
-                var xmlVivaType = "name <br>";
-                break;
-            case "default":
-                var xmlVivaType = "default <br>";
-                break;
-            case "label":
-                var xmlVivaType = "label <br>";
-                break;
-            default:
-                var xmlVivaType = "Meine Form hat keine Klasse! <br>";
-                break;
+                case "name":
+                case "default":
+                case "placeholder":
+                case "textrows":
+                case "textchars":
+                    var xmlVivaType = 
+                        lz10 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    break;
+                case "label":
+                case "align":
+                    var xmlVivaType = 
+                        lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
+                        lz10 + lz2 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    break;
+                default:
+                    var xmlVivaType = "Meine Form hat keine Klasse! <br>";
+                    break;
             }
+
 
             inputOutput += xmlVivaType;
 
         }
 
-        formOutput += "form name :" + getClassName + "<br>" + inputOutput; 
-        
+        formOutput +=  
+                lz8 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                lz10 + "&lt;viva:type&gt;<span>" + getClassName + "</span>&lt;/viva:type&gt;<br>" +
+                inputOutput + 
+                lz8 + "&lt;/rdf:li&gt;<br>";
     }
 
         inputfieldText = formOutput;
