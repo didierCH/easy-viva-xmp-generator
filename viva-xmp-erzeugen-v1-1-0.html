@@ -202,10 +202,10 @@ function elementeAbrufen() {
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
-        var inputOutput = "";
         var xmlVivaContBasic = "";
-        var xmlVivaCont02 = "";
-        var xmlVivaCont03 = "";
+        var xmlVivaContValue = "";
+        var xmlVivaContOptions = "";
+        var xmlVivaOptionsContainer =  "";
 
         // loop through all input-fields inside form-fields
         for (j = 0; j < inputAbrufen.length; j++) {
@@ -236,10 +236,16 @@ function elementeAbrufen() {
                         getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
                     break;
                 case "title":
+                    xmlVivaTypeOptions = 
+                        lz10 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" + 
+                        lz10 + lz8 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    break;
                 case "value":
                     xmlVivaTypeOptions = 
-                        lz10 + lz2 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                        lz10 + lz8 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>" + 
+                        lz10 + lz6 + "&lt;/rdf:li&gt;<br>"; 
                     break;
                 default:
                     xmlVivaType = "Meine Form hat keine Klasse! <br>";
@@ -247,15 +253,28 @@ function elementeAbrufen() {
             }
 
             xmlVivaContBasic += xmlVivaType;
-            xmlVivaCont02 += xmlVivaTypeValue;
+            xmlVivaContValue += xmlVivaTypeValue;
+            xmlVivaContOptions += xmlVivaTypeOptions;
 
         }
 
-        xmlVivaCont03 = 
+        var xmlVivaValueContainer = 
                 lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" 
-                + xmlVivaCont02 +
+                + xmlVivaContValue +
                 lz10 + "&lt;/rdf:value&gt;<br>";
-        inputOutput = xmlVivaContBasic + xmlVivaCont03;
+
+        if (xmlVivaContOptions == "") {
+            xmlVivaOptionsContainer = ""
+        } else {
+            xmlVivaOptionsContainer = 
+                    lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
+                    lz10 + lz2 + "&lt;viva:options&gt;<br>" + 
+                    lz10 + lz4 + "&lt;rdf:Seq&gt<br>" + xmlVivaContOptions + 
+                    lz10 + "&lt;/rdf:Seq&gt;<br>" + 
+                    lz8 + "&lt;/viva:options&gt<br>";
+        }
+
+        var inputOutput = xmlVivaContBasic + xmlVivaValueContainer + xmlVivaOptionsContainer;
         formOutput +=  
                 lz8 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
                 lz10 + "&lt;viva:type&gt;<span>" + getClassName + "</span>&lt;/viva:type&gt;<br>" +
