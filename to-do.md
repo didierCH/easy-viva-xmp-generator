@@ -2,6 +2,7 @@
 
 ## V1.1.0
 ### Programmierung
+* <del>Button zum hinzufügen von Inputfeldern erstellen
 * Optionale input-Felder hinzufügen (help, description, etc.)
 * Formularfelder nach oben oder unten verschieben
 * Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
