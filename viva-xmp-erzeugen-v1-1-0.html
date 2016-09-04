@@ -206,6 +206,7 @@ function elementeAbrufen() {
         var xmlVivaContValue = "";
         var xmlVivaContOptions = "";
         var xmlVivaOptionsContainer =  "";
+        var xmlVivaValueContainer = "";
 
         // loop through all input-fields inside form-fields
         for (j = 0; j < inputAbrufen.length; j++) {
@@ -258,10 +259,14 @@ function elementeAbrufen() {
 
         }
 
-        var xmlVivaValueContainer = 
+        if (xmlVivaContValue == "") {
+            xmlVivaCalueContainer = "";
+        } else {
+        xmlVivaValueContainer = 
                 lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" 
                 + xmlVivaContValue +
                 lz10 + "&lt;/rdf:value&gt;<br>";
+        }
 
         if (xmlVivaContOptions == "") {
             xmlVivaOptionsContainer = ""
