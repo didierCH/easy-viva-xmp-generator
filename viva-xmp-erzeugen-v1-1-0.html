@@ -244,8 +244,8 @@ function elementeAbrufen() {
                     break;
                 case "value":
                     xmlVivaTypeOptions = 
-                        lz10 + lz8 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>" + 
+                        lz10 + lz8 + "&lt;rdf:" + getInputNameValue + "&gt;<span>" + 
+                        getInputValue + "</span>&lt;/rdf:" + getInputNameValue + "&gt;<br>" + 
                         lz10 + lz6 + "&lt;/rdf:li&gt;<br>"; 
                     break;
                 default:
@@ -261,6 +261,8 @@ function elementeAbrufen() {
 
         if (xmlVivaContValue == "") {
             xmlVivaCalueContainer = "";
+        } else if (xmlVivaContOptions != ""){
+            var xmlVivaLabelInOption = xmlVivaTypeValue; 
         } else {
         xmlVivaValueContainer = 
                 lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" 
@@ -275,8 +277,10 @@ function elementeAbrufen() {
                     lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
                     lz10 + lz2 + "&lt;viva:options&gt;<br>" + 
                     lz10 + lz4 + "&lt;rdf:Seq&gt<br>" + xmlVivaContOptions + 
-                    lz10 + "&lt;/rdf:Seq&gt;<br>" + 
-                    lz8 + "&lt;/viva:options&gt<br>";
+                    lz10 + lz4 + "&lt;/rdf:Seq&gt;<br>" + 
+                    lz10 + lz2 + "&lt;/viva:options&gt<br>" +
+                    xmlVivaLabelInOption +
+                    lz10 + "&lt;/rdf:value&gt;<br>"; 
         }
 
         var inputOutput = xmlVivaContBasic + xmlVivaValueContainer + xmlVivaOptionsContainer;
