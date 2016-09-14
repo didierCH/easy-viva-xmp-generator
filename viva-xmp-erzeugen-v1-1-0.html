@@ -150,7 +150,7 @@ function neuesFormularfeld() {
             formName.setAttribute("value", inputValue[i]); // 5.
             form.appendChild(formName);
 
-        // erzeuge plus-element zum hinzufügen von zusätzlichen input-felder
+        // erzeuge plus-element zum hinzufügen von zusätzlichen input-feldern
             switch (inputFields[i]) {
                 case "default":
                 case "label":
@@ -159,7 +159,7 @@ function neuesFormularfeld() {
                     form.appendChild(chooseNewInput);
                     chooseNewInput.appendChild(plusText);
                     chooseNewInput.setAttribute("class", "plusButton");
-                    chooseNewInput.setAttribute("onclick", "alert('hello')");
+                    chooseNewInput.setAttribute("onclick", 'createPlusButton(this)');
                     break;
             }
 
@@ -171,7 +171,17 @@ function neuesFormularfeld() {
     // append line after new created formelement
     var linie = document.createElement("hr");
     document.getElementById("formularfelder").appendChild(linie);
+
 }
+
+function createPlusButton(obj) {
+    //obj.style.color = "yellow";
+    var makeNewInput = document.createElement("p");
+    var textInside = document.createTextNode("text inside");
+    makeNewInput.appendChild(textInside);
+
+    obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
+} 
 
 // IV
 // Elemente abrufen
