@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Viva XMP-Generator</title>
-    <!--[if lt IE 9]><script src="/static/script/html5shiv.js"></script><![endif]-->
     <style>
     * {box-sizing: border-box;}
     h1, h2, h3, p, label, input, select, button, option {font-family: arial, sans-serif;}
@@ -84,13 +83,13 @@
 
 <script type="text/javascript">
 
-// III
 // choose which form field you want to create
 function neuesFormularfeld() {
     valueNF = document.getElementById("newValueSortOf").value;
 
     determineNewFormfield(valueNF);
 
+    // determine the kind of formfield, that should be created
     function determineNewFormfield(valueNF) {
         switch (valueNF) {
             case "text":
@@ -143,15 +142,18 @@ function neuesFormularfeld() {
 
         // create input field
         for (i = 0; i < inputFields.length; i++) {
-            var inputLabel = document.createElement("label");
-            var text = document.createTextNode("viva: " + inputFields[i]); // 3.
-                form.appendChild(inputLabel);
-                inputLabel.appendChild(text);
-            var formName = document.createElement("input");
-                formName.setAttribute("type", "text");
-                formName.setAttribute("name", inputFields[i]); // 4.
-                formName.setAttribute("value", inputValue[i]); // 5.
-                form.appendChild(formName);
+            createInputField();
+            function createInputField() {
+                var inputLabel = document.createElement("label");
+                var text = document.createTextNode("viva: " + inputFields[i]); // 3.
+                    form.appendChild(inputLabel);
+                    inputLabel.appendChild(text);
+                var formName = document.createElement("input");
+                    formName.setAttribute("type", "text");
+                    formName.setAttribute("name", inputFields[i]); // 4.
+                    formName.setAttribute("value", inputValue[i]); // 5.
+                    form.appendChild(formName);
+            }
 
             // erzeuge plus-element zum hinzufügen von zusätzlichen input-feldern
                 switch (inputFields[i]) {
@@ -177,16 +179,20 @@ function neuesFormularfeld() {
     }
 }
 
+// funktion zum erstellen der zusätlichen inputfelder
 function createPlusButton(obj) {
-    //obj.style.color = "yellow";
-    var makeNewInput = document.createElement("p");
-    var textInside = document.createTextNode("text inside");
-    makeNewInput.appendChild(textInside);
+    var makeNewLabel = document.createElement("label");
+    var text = document.createTextNode("viva:placeholder"); 
+    makeNewLabel.appendChild(text);
+    var makeNewInput = document.createElement("input");
+    makeNewInput.setAttribute("type", "placeholder");
+    makeNewInput.setAttribute("name", "placeholder"); 
+    makeNewInput.setAttribute("value", ""); 
 
     obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
+    obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
 } 
 
-// IV
 // Elemente abrufen
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
@@ -251,6 +257,7 @@ function elementeAbrufen() {
                 case "name":
                 case "default":
                 case "placeholder":
+                case "pattern":
                 case "textrows":
                 case "textchars":
                     xmlVivaType = 
