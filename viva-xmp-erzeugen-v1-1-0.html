@@ -159,13 +159,22 @@ function neuesFormularfeld() {
                 switch (inputFields[i]) {
                     case "default":
                     case "label":
-                        var chooseNewInput = document.createElement("p");
-                        var plusText = document.createTextNode("+");
-                        form.appendChild(chooseNewInput);
-                        chooseNewInput.appendChild(plusText);
-                        chooseNewInput.setAttribute("class", "plusButton");
-                        chooseNewInput.setAttribute("onclick", 'createPlusButton(this)');
+                        var createNewSelect = document.createElement("select");
+                        var createNewOption1 = document.createElement("option");
+                            createNewOption1.text = "placeholder";
+                            createNewOption1.value = "placeholder";
+
+                        var createNewOption2 = document.createElement("option");
+                            createNewOption2.text = "help";
+                            createNewOption2.value = "help";
+
+                            form.appendChild(createNewSelect);
+                            createNewSelect.appendChild(createNewOption1);
+                            createNewSelect.appendChild(createNewOption2);
+                            createNewSelect.setAttribute("class", "plusButton");
+                            //createNewSelect.setAttribute("onclick", 'createPlusButton(this)');
                         break;
+
                 }
 
             // erzeuge umbruch-element br
