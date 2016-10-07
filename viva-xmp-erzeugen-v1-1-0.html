@@ -167,6 +167,7 @@ function neuesFormularfeld() {
                         var createNewOption2 = document.createElement("option");
                             createNewOption2.text = "help";
                             createNewOption2.value = "help";
+                            createNewOption2.setAttribute("onclick", "createPlusButton(this)");
 
                             form.appendChild(createNewSelect);
                             createNewSelect.appendChild(createNewOption1);
@@ -189,7 +190,14 @@ function neuesFormularfeld() {
 }
 
 // funktion zum erstellen der zusätlichen inputfelder
+// obj ersetzt in der Funktion das keyword this
 function createPlusButton(obj) {
+
+    // auswahl für Elternelemente
+    var getParentElem = obj.parentNode;
+    var getGrandparentElem = getParentElem.parentElement;
+
+    // erstelle benötigte html-elemente
     var makeNewLabel = document.createElement("label");
     var text = document.createTextNode("viva:placeholder"); 
     makeNewLabel.appendChild(text);
@@ -198,8 +206,16 @@ function createPlusButton(obj) {
     makeNewInput.setAttribute("name", "placeholder"); 
     makeNewInput.setAttribute("value", ""); 
 
-    obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
-    obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
+    // benutze insert before und nextSibling um das neue inputfeld unterhalb des aktuellen einzufügen
+    // obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
+    // obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
+    // obj.parentNode.style.backgroundColor = "green";
+    // obj.parentNode.parentNode.style.backgroundColor = "green";
+    obj.parentNode.parentNode.insertBefore(makeNewInput, obj.parentNode.nextSibling);
+    obj.parentNode.parentNode.insertBefore(makeNewLabel, obj.parentNode.nextSibling);
+    
+    // entferne aktuelle auswahl aus der dropdown liste
+    getParentElem.remove(getParentElem.selectedIndex);
 } 
 
 // Elemente abrufen
