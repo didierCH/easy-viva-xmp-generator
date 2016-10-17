@@ -124,7 +124,7 @@ function neuesFormularfeld() {
                 break;
             default:
                 result = "text";
-        }
+        }  // end of switch
 
         // create form-element
         var form = document.createElement("FORM");
@@ -142,8 +142,6 @@ function neuesFormularfeld() {
 
         // create input field
         for (i = 0; i < inputFields.length; i++) {
-            createInputField();
-            function createInputField() {
                 var inputLabel = document.createElement("label");
                 var text = document.createTextNode("viva: " + inputFields[i]); // 3.
                     form.appendChild(inputLabel);
@@ -153,35 +151,39 @@ function neuesFormularfeld() {
                     formName.setAttribute("name", inputFields[i]); // 4.
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
-            }
 
-            // erzeuge plus-element zum hinzufügen von zusätzlichen input-feldern
+
                 switch (inputFields[i]) {
                     case "default":
+                        var addInput = ["placeholder", "pattern"];
+                        createNewInput();
+                        break;
                     case "label":
-                        var createNewSelect = document.createElement("select");
-                        var createNewOption1 = document.createElement("option");
-                            createNewOption1.text = "placeholder";
-                            createNewOption1.value = "placeholder";
-
-                        var createNewOption2 = document.createElement("option");
-                            createNewOption2.text = "help";
-                            createNewOption2.value = "help";
-                            createNewOption2.setAttribute("onclick", "createPlusButton(this)");
-
-                            form.appendChild(createNewSelect);
-                            createNewSelect.appendChild(createNewOption1);
-                            createNewSelect.appendChild(createNewOption2);
-                            createNewSelect.setAttribute("class", "plusButton");
-                            //createNewSelect.setAttribute("onclick", 'createPlusButton(this)');
+                        var addInput = ["help"];
+                        createNewInput();
                         break;
 
-                }
+                    function createNewInput() {
+                        var createNewSelect = document.createElement("select");
+                        form.appendChild(createNewSelect);
+                        for (j = 0; j < addInput.length; j++) {
+                            var createNewOption = document.createElement("option");
+                                createNewOption.text  = addInput[j];
+                                createNewOption.setAttribute("value", addInput[j]);
+                                createNewOption.setAttribute("onclick", "createPlusButton(this)");
+
+                                createNewSelect.appendChild(createNewOption);
+                                createNewSelect.setAttribute("class", "plusButton");
+                        }  // end of j-loop
+                    }  // end of function createNewInput
+
+                }  // end switch
+
 
             // erzeuge umbruch-element br
             var br = document.createElement("br");
                 form.appendChild(br);
-        }
+        }  // end for-loop to create input-field
 
         // append line after new created formelement
         var linie = document.createElement("hr");
@@ -189,28 +191,24 @@ function neuesFormularfeld() {
     }
 }
 
+
 // funktion zum erstellen der zusätlichen inputfelder
 // obj ersetzt in der Funktion das keyword this
 function createPlusButton(obj) {
 
-    // auswahl für Elternelemente
-    var getParentElem = obj.parentNode;
-    var getGrandparentElem = getParentElem.parentElement;
-
     // erstelle benötigte html-elemente
     var makeNewLabel = document.createElement("label");
     var text = document.createTextNode("viva:placeholder"); 
-    makeNewLabel.appendChild(text);
+        makeNewLabel.appendChild(text);
     var makeNewInput = document.createElement("input");
-    makeNewInput.setAttribute("type", "placeholder");
-    makeNewInput.setAttribute("name", "placeholder"); 
-    makeNewInput.setAttribute("value", ""); 
+        makeNewInput.setAttribute("type", "placeholder");
+        makeNewInput.setAttribute("name", "placeholder"); 
+        makeNewInput.setAttribute("value", ""); 
 
     // benutze insert before und nextSibling um das neue inputfeld unterhalb des aktuellen einzufügen
-    // obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
-    // obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
-    // obj.parentNode.style.backgroundColor = "green";
-    // obj.parentNode.parentNode.style.backgroundColor = "green";
+    // obj.parentNode.parentNode wählt Grosseltern-Element aus
+    // obj.parentNode.nextSibling fügt nach dem ausgewählten select-Feld (Elternelement) das neue Element ein
+    var getParentElem = obj.parentNode;
     obj.parentNode.parentNode.insertBefore(makeNewInput, obj.parentNode.nextSibling);
     obj.parentNode.parentNode.insertBefore(makeNewLabel, obj.parentNode.nextSibling);
     
