@@ -155,25 +155,32 @@ function neuesFormularfeld() {
 
                 switch (inputFields[i]) {
                     case "default":
-                        var addInput = ["placeholder", "pattern"];
+                        // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
+                        // zu ermöglichen
+                        var addInput = ["","placeholder", "pattern"];
                         createNewInput();
                         break;
                     case "label":
-                        var addInput = ["help"];
+                        var addInput = ["", "help"];
                         createNewInput();
                         break;
 
                     function createNewInput() {
                         var createNewSelect = document.createElement("select");
-                        form.appendChild(createNewSelect);
+                            createNewSelect.setAttribute("onchange", "createPlusButton(this)");
+                            // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
+                            // ("onchange", "console.log(this.options[this.selectedIndex].index)");
+                            form.appendChild(createNewSelect);
                         for (j = 0; j < addInput.length; j++) {
                             var createNewOption = document.createElement("option");
                                 createNewOption.text  = addInput[j];
                                 createNewOption.setAttribute("value", addInput[j]);
-                                createNewOption.setAttribute("onclick", "createPlusButton(this)");
+                                // createNewOption.setAttribute("onclick", "createPlusButton(this)");
 
                                 createNewSelect.appendChild(createNewOption);
                                 createNewSelect.setAttribute("class", "plusButton");
+                                // erstes option-element wird ausgeblendet
+                                createNewSelect.firstChild.style.display = "none";
                         }  // end of j-loop
                     }  // end of function createNewInput
 
@@ -191,9 +198,6 @@ function neuesFormularfeld() {
     }
 }
 
-
-// funktion zum erstellen der zusätlichen inputfelder
-// obj ersetzt in der Funktion das keyword this
 function createPlusButton(obj) {
 
     // erstelle benötigte html-elemente
@@ -208,12 +212,19 @@ function createPlusButton(obj) {
     // benutze insert before und nextSibling um das neue inputfeld unterhalb des aktuellen einzufügen
     // obj.parentNode.parentNode wählt Grosseltern-Element aus
     // obj.parentNode.nextSibling fügt nach dem ausgewählten select-Feld (Elternelement) das neue Element ein
-    var getParentElem = obj.parentNode;
     obj.parentNode.parentNode.insertBefore(makeNewInput, obj.parentNode.nextSibling);
     obj.parentNode.parentNode.insertBefore(makeNewLabel, obj.parentNode.nextSibling);
     
-    // entferne aktuelle auswahl aus der dropdown liste
-    getParentElem.remove(getParentElem.selectedIndex);
+    // löschen des aktuell ausgewählten input-elements, beim letzten element wird das ganze select gelöscht
+    var getChildrenLen = obj.children.length;
+    console.log(getChildrenLen);
+    if (getChildrenLen <= 2) {
+        obj.parentNode.removeChild(obj);
+    } else {
+        obj.remove(obj.selectedIndex);
+    }
+    console.log(obj.children.length);
+    console.log(obj.nodeName);
 } 
 
 // Elemente abrufen
