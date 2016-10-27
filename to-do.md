@@ -2,15 +2,18 @@
 
 ## V1.1.0
 ### Programmierung
-* <del>Button zum hinzufügen von Inputfeldern erstellen
-* Optionale input-Felder hinzufügen (help, description, etc.)
+* Ändere die Funktion 'Formularfelder hinzufügen' so ab, dass "hidden" ausgenommen wird
 * Formularfelder nach oben oder unten verschieben
-* Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+* Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
+* Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
 * <del>Einzelne Leerschläge mit Variable ersetzen
 * <del>Redundanten Code entfernen (XML-Code-Generierung mit Loop und Weiche gestalten)
 * <del>Kontrolle der XML-Ausgabe
+* <del>Button zum hinzufügen von Inputfeldern erstellen
+* <del>Optionale input-Felder hinzufügen (help, description, etc.)
+* <del>Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
 
 ### Design
 * Tooltips mit Beschreibung der Funktionen einfügen
