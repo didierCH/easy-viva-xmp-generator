@@ -152,7 +152,6 @@ function neuesFormularfeld() {
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
 
-
                 switch (inputFields[i]) {
                     case "default":
                         // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
@@ -164,10 +163,14 @@ function neuesFormularfeld() {
                         var addInput = ["", "help"];
                         createNewInput();
                         break;
+                    default:
+                        // do nothing
+                }  // end switch
 
                     function createNewInput() {
+
                         var createNewSelect = document.createElement("select");
-                            createNewSelect.setAttribute("onchange", "createPlusButton(this)");
+                            createNewSelect.setAttribute("onchange", "createNewInputSelect(this)");
                             // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
                             // ("onchange", "console.log(this.options[this.selectedIndex].index)");
                             form.appendChild(createNewSelect);
@@ -175,7 +178,7 @@ function neuesFormularfeld() {
                             var createNewOption = document.createElement("option");
                                 createNewOption.text  = addInput[j];
                                 createNewOption.setAttribute("value", addInput[j]);
-                                // createNewOption.setAttribute("onclick", "createPlusButton(this)");
+                                // createNewOption.setAttribute("onclick", "createNewInputSelect(this)");
 
                                 createNewSelect.appendChild(createNewOption);
                                 createNewSelect.setAttribute("class", "plusButton");
@@ -184,7 +187,6 @@ function neuesFormularfeld() {
                         }  // end of j-loop
                     }  // end of function createNewInput
 
-                }  // end switch
 
 
             // erzeuge umbruch-element br
@@ -198,33 +200,33 @@ function neuesFormularfeld() {
     }
 }
 
-function createPlusButton(obj) {
+function createNewInputSelect(obj) {
+    
+    var newInputValue = obj.options[obj.selectedIndex].value;
 
     // erstelle benötigte html-elemente
     var makeNewLabel = document.createElement("label");
-    var text = document.createTextNode("viva:placeholder"); 
+    var text = document.createTextNode("viva:"+ newInputValue); 
         makeNewLabel.appendChild(text);
     var makeNewInput = document.createElement("input");
-        makeNewInput.setAttribute("type", "placeholder");
-        makeNewInput.setAttribute("name", "placeholder"); 
+        makeNewInput.setAttribute("type", "text");
+        makeNewInput.setAttribute("name", newInputValue); 
         makeNewInput.setAttribute("value", ""); 
 
-    // benutze insert before und nextSibling um das neue inputfeld unterhalb des aktuellen einzufügen
-    // obj.parentNode.parentNode wählt Grosseltern-Element aus
-    // obj.parentNode.nextSibling fügt nach dem ausgewählten select-Feld (Elternelement) das neue Element ein
-    obj.parentNode.parentNode.insertBefore(makeNewInput, obj.parentNode.nextSibling);
-    obj.parentNode.parentNode.insertBefore(makeNewLabel, obj.parentNode.nextSibling);
+    // fügt input feld unterhalb des aktuellen ein
+    obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
+    obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
     
+    console.log(obj.options[obj.selectedIndex].value);
+
     // löschen des aktuell ausgewählten input-elements, beim letzten element wird das ganze select gelöscht
     var getChildrenLen = obj.children.length;
-    console.log(getChildrenLen);
+    // console.log(getChildrenLen);
     if (getChildrenLen <= 2) {
         obj.parentNode.removeChild(obj);
     } else {
         obj.remove(obj.selectedIndex);
     }
-    console.log(obj.children.length);
-    console.log(obj.nodeName);
 } 
 
 // Elemente abrufen
