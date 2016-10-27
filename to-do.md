@@ -2,7 +2,7 @@
 
 ## V1.1.0
 ### Programmierung
-* Ändere die Funktion 'Formularfelder hinzufügen' so ab, dass "hidden" ausgenommen wird
+* Ändere die Funktion 'Formularfelder hinzufügen' so ab, dass "hidden" ausgenommen wird, prüfe welche Felder bei  'textbox' und 'select' benötigt werden
 * Formularfelder nach oben oder unten verschieben
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
