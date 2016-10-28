@@ -4,6 +4,7 @@
 ### Programmierung
 * Ändere die Funktion 'Formularfelder hinzufügen' so ab, dass "hidden" ausgenommen wird, prüfe welche Felder bei  'textbox' und 'select' benötigt werden
 * Funktion zum hinzufügen von zwei neuen Input-Feldern für select-Felder
+* Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
 * Formularfelder nach oben oder unten verschieben
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
