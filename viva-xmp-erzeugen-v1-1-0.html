@@ -93,31 +93,31 @@ function neuesFormularfeld() {
     function determineNewFormfield(valueNF) {
         switch (valueNF) {
             case "text":
-                var formClassName = "text"; // 1.
+                // var formClassName = "text"; // 1.
                 var h3HeaderTitle = "Textfeld"; // 2.
                 var inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
                 var inputValue = ["", "", ""]; // 5.
                 break;
             case "hidden":
-                var formClassName = "hidden";
+                // var formClassName = "hidden";
                 var h3HeaderTitle = "Verstecktes Feld";
                 var inputFields = ["name", "default"];
                 var inputValue = ["", ""]
                 break;
             case "email":
-                var formClassName = "email";
+                // var formClassName = "email";
                 var h3HeaderTitle = "E-Mail-Feld";
                 var inputFields = ["name", "default", "label", "align"];
                 var inputValue = ["", "", "", "left"];
                 break;
             case "textarea":
-                var formClassName = "textarea";
+                // var formClassName = "textarea";
                 var h3HeaderTitle = "Mehrzeiliges Formularfeld";
                 var inputFields = ["name", "default", "textrows", "textchars", "label"];
                 var inputValue = ["", "", "", "", ""];
                 break;
             case "select":
-                var formClassName = "select";
+                // var formClassName = "select";
                 var h3HeaderTitle = "Auswahlfeld";
                 var inputFields = ["name", "title", "value", "title", "value", "label"];
                 var inputValue = ["", "", "", "", "", ""];
@@ -128,7 +128,8 @@ function neuesFormularfeld() {
 
         // create form-element
         var form = document.createElement("FORM");
-            form.setAttribute("class", formClassName); // 1.
+            // form.setAttribute("class", formClassName); // 1.
+            form.setAttribute("class", valueNF); // 1.
 
         // append new formelement with content to div formularfelder
         document.getElementById("formularfelder").appendChild(form);
@@ -139,6 +140,8 @@ function neuesFormularfeld() {
             form.appendChild(header);
             header.appendChild(headerText);
 
+
+            console.log(valueNF);
 
         // create input field
         for (i = 0; i < inputFields.length; i++) {
@@ -151,6 +154,7 @@ function neuesFormularfeld() {
                     formName.setAttribute("name", inputFields[i]); // 4.
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
+
 
                 switch (inputFields[i]) {
                     case "default":
