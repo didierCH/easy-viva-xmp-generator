@@ -140,9 +140,6 @@ function neuesFormularfeld() {
             form.appendChild(header);
             header.appendChild(headerText);
 
-
-            console.log(valueNF);
-
         // create input field
         for (i = 0; i < inputFields.length; i++) {
                 var inputLabel = document.createElement("label");
@@ -155,9 +152,6 @@ function neuesFormularfeld() {
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
 
-
-                console.log(valueNF);
-
                 if (inputFields[i] == "default" && valueNF !== "hidden") {
                     // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
                     // zu ermöglichen
@@ -166,29 +160,31 @@ function neuesFormularfeld() {
                 } else if (inputFields[i] == "label") {
                     var addInput = ["", "help"];
                     createNewInput();
+                } else if (inputFields[i] == "value") {
+                    var addInput = ["", "neue Option"];
+                    createNewInput();
                 }
 
-                    function createNewInput() {
+                // erstelle select mit options zum auswählen von neuen input-feldern
+                function createNewInput() {
 
-                        var createNewSelect = document.createElement("select");
-                            createNewSelect.setAttribute("onchange", "createNewInputSelect(this)");
-                            // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
-                            // ("onchange", "console.log(this.options[this.selectedIndex].index)");
-                            form.appendChild(createNewSelect);
-                        for (j = 0; j < addInput.length; j++) {
-                            var createNewOption = document.createElement("option");
-                                createNewOption.text  = addInput[j];
-                                createNewOption.setAttribute("value", addInput[j]);
-                                // createNewOption.setAttribute("onclick", "createNewInputSelect(this)");
+                    var createNewSelect = document.createElement("select");
+                        createNewSelect.setAttribute("onchange", "chooseNewInputSelect(this)");
+                        // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
+                        // ("onchange", "console.log(this.options[this.selectedIndex].index)");
+                        form.appendChild(createNewSelect);
+                    for (j = 0; j < addInput.length; j++) {
+                        var createNewOption = document.createElement("option");
+                            createNewOption.text  = addInput[j];
+                            createNewOption.setAttribute("value", addInput[j]);
+                            // createNewOption.setAttribute("onclick", "chooseNewInputSelect(this)");
 
-                                createNewSelect.appendChild(createNewOption);
-                                createNewSelect.setAttribute("class", "plusButton");
-                                // erstes option-element wird ausgeblendet
-                                createNewSelect.firstChild.style.display = "none";
-                        }  // end of j-loop
-                    }  // end of function createNewInput
-
-
+                            createNewSelect.appendChild(createNewOption);
+                            createNewSelect.setAttribute("class", "plusButton");
+                            // erstes option-element wird ausgeblendet
+                            createNewSelect.firstChild.style.display = "none";
+                    }  // end of j-loop
+                }  // end of function createNewInput
 
             // erzeuge umbruch-element br
             var br = document.createElement("br");
@@ -201,13 +197,26 @@ function neuesFormularfeld() {
     }
 }
 
-function createNewInputSelect(obj) {
+function chooseNewInputSelect(obj) {
     
     var newInputValue = obj.options[obj.selectedIndex].value;
 
-    // erstelle benötigte html-elemente
+    if (newInputValue == "neue Option") {
+    console.log("titel");
+    makeNewInputElement(obj, "value");
+    makeNewInputElement(obj, "title");
+    } else {
+        // erstelle benötigte html-elemente
+        makeNewInputElement(obj, newInputValue);
+        removeElements(obj);
+    }
+
+
+}  // ende chooseNewInputSelect
+
+function makeNewInputElement(obj, newInputValue) {
     var makeNewLabel = document.createElement("label");
-    var text = document.createTextNode("viva:"+ newInputValue); 
+    var text = document.createTextNode("viva: "+ newInputValue); 
         makeNewLabel.appendChild(text);
     var makeNewInput = document.createElement("input");
         makeNewInput.setAttribute("type", "text");
@@ -215,20 +224,22 @@ function createNewInputSelect(obj) {
         makeNewInput.setAttribute("value", ""); 
 
     // fügt input feld unterhalb des aktuellen ein
-    obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
-    obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
-    
-    console.log(obj.options[obj.selectedIndex].value);
+        obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
+        obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
+}  // ende makeNewInputElement
 
-    // löschen des aktuell ausgewählten input-elements, beim letzten element wird das ganze select gelöscht
+
+// löschen des aktuell ausgewählten input-elements, beim letzten element wird das ganze select gelöscht
+function removeElements(obj) {
     var getChildrenLen = obj.children.length;
-    // console.log(getChildrenLen);
     if (getChildrenLen <= 2) {
+        // lösche select-element
         obj.parentNode.removeChild(obj);
     } else {
+        // lösche ausgewähltes option-Element
         obj.remove(obj.selectedIndex);
-    }
-} 
+    }  // ende if else
+}
 
 // Elemente abrufen
 function elementeAbrufen() {
