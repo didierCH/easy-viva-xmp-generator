@@ -156,18 +156,20 @@ function neuesFormularfeld() {
                     // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
                     // zu ermöglichen
                     var addInput = ["","placeholder", "pattern"];
-                    createNewInput();
+                    createNewInput(form, addInput);
                 } else if (inputFields[i] == "label") {
                     var addInput = ["", "help"];
-                    createNewInput();
+                    createNewInput(form, addInput);
                 } else if (inputFields[i] == "value") {
                     var addInput = ["", "neue Option"];
-                    createNewInput();
+                    createNewInput(form, addInput);
                 }
 
+                /*
                 // erstelle select mit options zum auswählen von neuen input-feldern
                 function createNewInput() {
 
+                console.log(addInput);
                     var createNewSelect = document.createElement("select");
                         createNewSelect.setAttribute("onchange", "chooseNewInputSelect(this)");
                         // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
@@ -185,6 +187,7 @@ function neuesFormularfeld() {
                             createNewSelect.firstChild.style.display = "none";
                     }  // end of j-loop
                 }  // end of function createNewInput
+                */
 
             // erzeuge umbruch-element br
             var br = document.createElement("br");
@@ -196,6 +199,31 @@ function neuesFormularfeld() {
         document.getElementById("formularfelder").appendChild(linie);
     }
 }
+
+// // /// /// //// //// ///// /////
+// Funktionen zum Erstellen des Select zur Auswahl von neuen Inputfeldern
+
+// erstelle select mit options zum auswählen von neuen input-feldern
+function createNewInput(form, addInput) {
+
+console.log(addInput);
+    var createNewSelect = document.createElement("select");
+        createNewSelect.setAttribute("onchange", "chooseNewInputSelect(this)");
+        // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
+        // ("onchange", "console.log(this.options[this.selectedIndex].index)");
+        form.appendChild(createNewSelect);
+    for (j = 0; j < addInput.length; j++) {
+        var createNewOption = document.createElement("option");
+            createNewOption.text  = addInput[j];
+            createNewOption.setAttribute("value", addInput[j]);
+            // createNewOption.setAttribute("onclick", "chooseNewInputSelect(this)");
+
+            createNewSelect.appendChild(createNewOption);
+            createNewSelect.setAttribute("class", "plusButton");
+            // erstes option-element wird ausgeblendet
+            createNewSelect.firstChild.style.display = "none";
+    }  // end of j-loop
+}  // end of function createNewInput
 
 function chooseNewInputSelect(obj) {
     
@@ -211,6 +239,8 @@ function chooseNewInputSelect(obj) {
         removeElements(obj);
     }
 
+    // var newTest = obj.options[obj].length;
+    // console.log(newTest);
 
 }  // ende chooseNewInputSelect
 
@@ -240,6 +270,9 @@ function removeElements(obj) {
         obj.remove(obj.selectedIndex);
     }  // ende if else
 }
+
+// Ende der Funktionen zum Erstellen der Input-Felder
+// // /// /// //// //// ///// /////
 
 // Elemente abrufen
 function elementeAbrufen() {
