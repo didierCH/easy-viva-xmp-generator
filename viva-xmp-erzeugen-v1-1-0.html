@@ -152,6 +152,7 @@ function neuesFormularfeld() {
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
 
+                // auswahl-bedingungen für das neue select feld
                 if (inputFields[i] == "default" && valueNF !== "hidden") {
                     // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
                     // zu ermöglichen
@@ -165,29 +166,6 @@ function neuesFormularfeld() {
                     createNewInput(form, addInput);
                 }
 
-                /*
-                // erstelle select mit options zum auswählen von neuen input-feldern
-                function createNewInput() {
-
-                console.log(addInput);
-                    var createNewSelect = document.createElement("select");
-                        createNewSelect.setAttribute("onchange", "chooseNewInputSelect(this)");
-                        // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
-                        // ("onchange", "console.log(this.options[this.selectedIndex].index)");
-                        form.appendChild(createNewSelect);
-                    for (j = 0; j < addInput.length; j++) {
-                        var createNewOption = document.createElement("option");
-                            createNewOption.text  = addInput[j];
-                            createNewOption.setAttribute("value", addInput[j]);
-                            // createNewOption.setAttribute("onclick", "chooseNewInputSelect(this)");
-
-                            createNewSelect.appendChild(createNewOption);
-                            createNewSelect.setAttribute("class", "plusButton");
-                            // erstes option-element wird ausgeblendet
-                            createNewSelect.firstChild.style.display = "none";
-                    }  // end of j-loop
-                }  // end of function createNewInput
-                */
 
             // erzeuge umbruch-element br
             var br = document.createElement("br");
@@ -206,44 +184,53 @@ function neuesFormularfeld() {
 // erstelle select mit options zum auswählen von neuen input-feldern
 function createNewInput(form, addInput) {
 
-console.log(addInput);
     var createNewSelect = document.createElement("select");
         createNewSelect.setAttribute("onchange", "chooseNewInputSelect(this)");
-        // createNewSelect.setAttribute("onchange", "getClickedElement(this)");
-        // ("onchange", "console.log(this.options[this.selectedIndex].index)");
-        form.appendChild(createNewSelect);
     for (j = 0; j < addInput.length; j++) {
         var createNewOption = document.createElement("option");
             createNewOption.text  = addInput[j];
             createNewOption.setAttribute("value", addInput[j]);
-            // createNewOption.setAttribute("onclick", "chooseNewInputSelect(this)");
 
             createNewSelect.appendChild(createNewOption);
             createNewSelect.setAttribute("class", "plusButton");
             // erstes option-element wird ausgeblendet
             createNewSelect.firstChild.style.display = "none";
     }  // end of j-loop
+
+    form.appendChild(createNewSelect);
+    // formAppendChild(form, createNewSelect);
+
 }  // end of function createNewInput
 
-function chooseNewInputSelect(obj) {
+/*
+function formAppendChild(form, createNewSelect) {
+    form.appendChild(createNewSelect);
+    // form.insertBefore(createNewSelect, form.nextSibling);
+    // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+*/
+
+// auswählen des neu zu erstellenden input-elements
+function chooseNewInputSelect(obj, createNewSelect, form) {
     
     var newInputValue = obj.options[obj.selectedIndex].value;
 
     if (newInputValue == "neue Option") {
-    console.log("titel");
-    makeNewInputElement(obj, "value");
-    makeNewInputElement(obj, "title");
+        makeNewInputElement(obj, "value");
+        makeNewInputElement(obj, "title");
+        obj.parentNode.removeChild(obj);
+        // formAppendChild(newNode, referenceNode);
+        // obj.parentNode.insertBefore(createNewSelect, obj.nextSibling);
+        // form.appendChild(createNewSelect);
     } else {
         // erstelle benötigte html-elemente
         makeNewInputElement(obj, newInputValue);
         removeElements(obj);
     }
 
-    // var newTest = obj.options[obj].length;
-    // console.log(newTest);
-
 }  // ende chooseNewInputSelect
 
+// erstelle neues label und neues input-element
 function makeNewInputElement(obj, newInputValue) {
     var makeNewLabel = document.createElement("label");
     var text = document.createTextNode("viva: "+ newInputValue); 
