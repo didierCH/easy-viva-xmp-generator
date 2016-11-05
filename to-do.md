@@ -1,24 +1,27 @@
 # Viva XMP erzeugen to-do Liste
 
 ## V1.3.0
-* Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
+* Hinzufügen von Feld "File-Upload"
 * Formularfelder nach oben oder unten verschieben
-* Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
-* Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+* Hinzufügen und entfernen von neuen Optionen bei select
+* Optionsfelder bei select nach oben oder unten verschieben
 * Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
 * Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
 
 
 ### In Erwägung ziehen
+* Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
 * Pre-Box durch Textbox ersetzten, damit vor dem Kopieren Änderungen durchgeführt werden können
 * Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 * Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
+* Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 
 ### Design
 * Felder title und value bei den Inputfeldern für select optisch gruppieren
 * Input-Hinzufügen Button besser gestalten (evtl. wie default in Chrome oder als Plus-Button)
 * Tooltips mit Beschreibung der Funktionen einfügen
 * Erweiterte Hilfe zu den Funktionen einbauen
+* Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
 
 <del>## V1.2.0
 <del>### Programmierung
