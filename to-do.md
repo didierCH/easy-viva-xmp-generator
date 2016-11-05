@@ -14,8 +14,14 @@
 * Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 * Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
 
-## V1.2.0
-### Programmierung
+### Design
+* Felder title und value bei den Inputfeldern für select optisch gruppieren
+* Input-Hinzufügen Button besser gestalten (evtl. wie default in Chrome oder als Plus-Button)
+* Tooltips mit Beschreibung der Funktionen einfügen
+* Erweiterte Hilfe zu den Funktionen einbauen
+
+<del>## V1.2.0
+<del>### Programmierung
 * <del>Einzelne Leerschläge mit Variable ersetzen
 * <del>Redundanten Code entfernen (XML-Code-Generierung mit Loop und Weiche gestalten)
 * <del>Kontrolle der XML-Ausgabe
@@ -24,12 +30,6 @@
 * <del>Auswahlliste: neue Auswahlfelder hinzufügen und Code verbessern
 * <del>Ändere die Funktion 'Formularfelder hinzufügen' so ab, dass "hidden" ausgenommen wird, prüfe welche Felder bei  'textbox' und 'select' benötigt werden
 * <del>Funktion zum hinzufügen von zwei neuen Input-Feldern für select-Felder
-
-### Design
-* Felder title und value bei den Inputfeldern für select optisch gruppieren
-* Input-Hinzufügen Button besser gestalten (evtl. wie default in Chrome oder als Plus-Button)
-* Tooltips mit Beschreibung der Funktionen einfügen
-* Erweiterte Hilfe zu den Funktionen einbauen
 
 <del>## V1.0.0
 <del>### Programmierung
