@@ -1,12 +1,12 @@
 # Viva XMP erzeugen to-do Liste
 
 ## V1.3.0
-* Hinzufügen von Feld "File-Upload"
 * Formularfelder nach oben oder unten verschieben
 * Hinzufügen und entfernen von neuen Optionen bei select
 * Optionsfelder bei select nach oben oder unten verschieben
 * Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
 * Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
+* <del>Hinzufügen von Feld "File-Upload"
 
 
 ### In Erwägung ziehen
