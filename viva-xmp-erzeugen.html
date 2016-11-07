@@ -61,6 +61,7 @@
             <option value="email">E-Mail Feld</option>
             <option value="textarea">Mehrzeiliges Formularfeld</option>
             <option value="select">Auswahlliste</option>
+            <option value="upload">File-Upload</option>
         </select>
         <button id="buttonFormularErstellen" onclick="neuesFormularfeld()">Formularfeld hinzufügen</button>
     </div>
@@ -118,9 +119,15 @@ function neuesFormularfeld() {
                 break;
             case "select":
                 // var formClassName = "select";
-                var h3HeaderTitle = "Auswahlfeld";
+                var h3HeaderTitle = "Auswahlliste";
                 var inputFields = ["name", "title", "value", "title", "value", "label"];
                 var inputValue = ["", "", "", "", "", ""];
+                break;
+            case "upload":
+                // var formClassName = "text"; // 1.
+                var h3HeaderTitle = "File-Upload"; // 2.
+                var inputFields = ["name", "default", "pattern", "label", "help"]; // 3. & 4. (wird auch für das Attribut name verwendet
+                var inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."]; // 5.
                 break;
             default:
                 result = "text";
@@ -153,11 +160,17 @@ function neuesFormularfeld() {
                     form.appendChild(formName);
 
                 // auswahl-bedingungen für das neue select feld
-                if (inputFields[i] == "default" && valueNF !== "hidden") {
+                // if (inputFields[i] == "default" && valueNF !== "hidden") {
+                if (inputFields[i] == "default") {
                     // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
                     // zu ermöglichen
-                    var addInput = ["","placeholder", "pattern"];
-                    createNewInput(form, addInput);
+                    if (valueNF == "text" || valueNF == "email" || valueNF == "textarea") {
+                        var addInput = ["","placeholder", "pattern"];
+                        createNewInput(form, addInput);
+                    } else if (valueNF == "upload") {
+                        var addInput = ["", "placeholder"];
+                        createNewInput(form, addInput);
+                    }
                 } else if (inputFields[i] == "label") {
                     var addInput = ["", "help"];
                     createNewInput(form, addInput);
