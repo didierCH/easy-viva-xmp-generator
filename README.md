@@ -4,6 +4,9 @@ XML-File Generator zum Erstellen von XMP-Dateien in Viva-Publisher als Schnittst
 XML-File generator for the Viva Publisher to use with the Printplus Druckportal  
 
 ## Funktionen
+### Version 1.3.0
+* Zusätzliche Option zum erstellen von File-Upload-Feldern
+
 ### Version 1.2.0
 * Auswahlliste zum Hinzufügen von zusätzlichen Optionen (Inputfelder)
 
