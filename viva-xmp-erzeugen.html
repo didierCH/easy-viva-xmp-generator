@@ -83,54 +83,57 @@
     </div> <!-- end of wrapper -->
 
 <script type="text/javascript">
-
 // choose which form field you want to create
 function neuesFormularfeld() {
-    valueNF = document.getElementById("newValueSortOf").value;
+    var valueNF = document.getElementById("newValueSortOf").value;
 
     determineNewFormfield(valueNF);
 
     // determine the kind of formfield, that should be created
     function determineNewFormfield(valueNF) {
+       var h3HeaderTitle;
+        var inputFields;
+        var inputValue;
+
         switch (valueNF) {
             case "text":
                 // var formClassName = "text"; // 1.
-                var h3HeaderTitle = "Textfeld"; // 2.
-                var inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
-                var inputValue = ["", "", ""]; // 5.
+                h3HeaderTitle = "Textfeld"; // 2.
+                inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
+                inputValue = ["", "", ""]; // 5.
                 break;
             case "hidden":
                 // var formClassName = "hidden";
-                var h3HeaderTitle = "Verstecktes Feld";
-                var inputFields = ["name", "default"];
-                var inputValue = ["", ""]
+                h3HeaderTitle = "Verstecktes Feld";
+                inputFields = ["name", "default"];
+                inputValue = ["", ""];
                 break;
             case "email":
                 // var formClassName = "email";
-                var h3HeaderTitle = "E-Mail-Feld";
-                var inputFields = ["name", "default", "label", "align"];
-                var inputValue = ["", "", "", "left"];
+                h3HeaderTitle = "E-Mail-Feld";
+                inputFields = ["name", "default", "label", "align"];
+                inputValue = ["", "", "", "left"];
                 break;
             case "textarea":
                 // var formClassName = "textarea";
-                var h3HeaderTitle = "Mehrzeiliges Formularfeld";
-                var inputFields = ["name", "default", "textrows", "textchars", "label"];
-                var inputValue = ["", "", "", "", ""];
+                h3HeaderTitle = "Mehrzeiliges Formularfeld";
+                inputFields = ["name", "default", "textrows", "textchars", "label"];
+                inputValue = ["", "", "", "", ""];
                 break;
             case "select":
                 // var formClassName = "select";
-                var h3HeaderTitle = "Auswahlliste";
-                var inputFields = ["name", "title", "value", "title", "value", "label"];
-                var inputValue = ["", "", "", "", "", ""];
+                h3HeaderTitle = "Auswahlliste";
+                inputFields = ["name", "title", "value", "title", "value", "label"];
+                inputValue = ["", "", "", "", "", ""];
                 break;
             case "upload":
                 // var formClassName = "text"; // 1.
-                var h3HeaderTitle = "File-Upload"; // 2.
-                var inputFields = ["name", "default", "pattern", "label", "help"]; // 3. & 4. (wird auch für das Attribut name verwendet
-                var inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."]; // 5.
+                h3HeaderTitle = "File-Upload"; // 2.
+                inputFields = ["name", "default", "pattern", "label", "help"]; // 3. & 4. (wird auch für das Attribut name verwendet
+                inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."]; // 5.
                 break;
-            default:
-                result = "text";
+            // default:
+               // var result = "text";
         }  // end of switch
 
         // create form-element
@@ -143,7 +146,7 @@ function neuesFormularfeld() {
 
         // create header element
         var header = document.createElement("h3");
-            headerText = document.createTextNode(h3HeaderTitle); // 2.
+            var headerText = document.createTextNode(h3HeaderTitle); // 2.
             form.appendChild(header);
             header.appendChild(headerText);
 
@@ -160,22 +163,22 @@ function neuesFormularfeld() {
                     form.appendChild(formName);
 
                 // auswahl-bedingungen für das neue select feld
-                // if (inputFields[i] == "default" && valueNF !== "hidden") {
+                var addInput;
                 if (inputFields[i] == "default") {
                     // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
                     // zu ermöglichen
                     if (valueNF == "text" || valueNF == "email" || valueNF == "textarea") {
-                        var addInput = ["","placeholder", "pattern"];
+                        addInput = ["","placeholder", "pattern"];
                         createNewInput(form, addInput);
                     } else if (valueNF == "upload") {
-                        var addInput = ["", "placeholder"];
+                        addInput = ["", "placeholder"];
                         createNewInput(form, addInput);
                     }
                 } else if (inputFields[i] == "label") {
-                    var addInput = ["", "help"];
+                    addInput = ["", "help"];
                     createNewInput(form, addInput);
                 } else if (inputFields[i] == "value") {
-                    var addInput = ["", "neue Option"];
+                    addInput = ["", "neue Option"];
                     createNewInput(form, addInput);
                 }
 
@@ -376,19 +379,19 @@ function elementeAbrufen() {
 
         }
 
-        if (xmlVivaContValue == "") {
-            xmlVivaCalueContainer = "";
-        } else if (xmlVivaContOptions != ""){
+        if (xmlVivaContValue === "") {
+            xmlVivaValueContainer = "";
+        } else if (xmlVivaContOptions !== ""){
             var xmlVivaLabelInOption = xmlVivaTypeValue; 
         } else {
         xmlVivaValueContainer = 
-                lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" 
-                + xmlVivaContValue +
+                lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
+                xmlVivaContValue +
                 lz10 + "&lt;/rdf:value&gt;<br>";
         }
 
-        if (xmlVivaContOptions == "") {
-            xmlVivaOptionsContainer = ""
+        if (xmlVivaContOptions === "") {
+            xmlVivaOptionsContainer = "";
         } else {
             xmlVivaOptionsContainer = 
                     lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
@@ -412,7 +415,6 @@ function elementeAbrufen() {
 
     document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
 }
-
 
 </script>
 
