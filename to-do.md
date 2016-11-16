@@ -7,11 +7,13 @@
 * Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
 * Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
 * <del>Hinzufügen von Feld "File-Upload"
+* <del>Geprüft und verbessert mit JSHint
 
 
 ### In Erwägung ziehen
 * Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
 * Pre-Box durch Textbox ersetzten, damit vor dem Kopieren Änderungen durchgeführt werden können
+* Button für XML-Ausgabefeld erstellen, mit dem der ganze Text markiert werden kann zum einfacheren kopieren
 * Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 * Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
 * Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
