@@ -9,7 +9,7 @@
     h1, h2, h3, p, label, input, select, button, option {font-family: arial, sans-serif;}
     h1 {font-size: 24px; margin-bottom: 0;}
     h2 {font-size: 19.2px; font-weight: normal;}
-    h3 {font-size: 19.2px;}
+    h3 {font-size: 19.2px; width: 80%; float: left; margin-bottom: 15px; margin-top: 5px;}
     label {display: inline-block; width: 176px; padding: 3.2px 0px;}
     input {height: 22px; width: 293px; border: none; background-color: #3cbc8d; padding: 4px;}
     select {height: 22px; width: 293px; display: inline-block; border: none; background-color: #3cbc8d;}
@@ -26,6 +26,8 @@
     #buttonXMPdateiErstellen {border: 2px solid #000; height: 30px; width: 200px; font-weight: bold; margin-top: 32px;}
     #version {font-size: 10.4px; float: right;}
     .plusButton {display: inline-block; font-weight: bold; text-align: center; margin: 0; height: 22px; width: 22px; background-color: red; cursor: pointer;}
+    .moveUpButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-bottom: 16px solid green; margin-top: 5px;}
+    .moveDownButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-top: 16px solid green; margin-top: 5px;}
     </style>
 <head>
 <body>
@@ -140,6 +142,7 @@ function neuesFormularfeld() {
         var form = document.createElement("FORM");
             // form.setAttribute("class", formClassName); // 1.
             form.setAttribute("class", valueNF); // 1.
+            // form.setAttribute("onclick", "moveUp(this)");
 
         // append new formelement with content to div formularfelder
         document.getElementById("formularfelder").appendChild(form);
@@ -149,6 +152,19 @@ function neuesFormularfeld() {
             var headerText = document.createTextNode(h3HeaderTitle); // 2.
             form.appendChild(header);
             header.appendChild(headerText);
+
+        // create move up/move down buttons
+        var moveDownButton = document.createElement("DIV");
+            form.appendChild(moveDownButton);
+            moveDownButton.setAttribute("class", "moveDownButton");
+            moveDownButton.setAttribute("onclick", "moveUp(this)");
+            moveDownButton.setAttribute("title", "Bewege Feld nach unten");
+
+        var moveUpButton = document.createElement("DIV");
+            form.appendChild(moveUpButton);
+            moveUpButton.setAttribute("class", "moveUpButton");
+            moveUpButton.setAttribute("onclick", "moveUp(this)");
+            moveUpButton.setAttribute("title", "Bewege Feld nach oben");
 
         // create input field
         for (i = 0; i < inputFields.length; i++) {
@@ -195,6 +211,20 @@ function neuesFormularfeld() {
         // append line after new created formelement
         var linie = document.createElement("hr");
         form.appendChild(linie);
+    }
+}
+
+// // /// MOVE INPUT UP AND DOWN
+
+function moveUp(obj) {
+    // var grandParentObj = obj.parentNode;
+    var grandParentObj = obj.parentNode.parentNode;
+    var getForm = grandParentObj.getElementsByTagName("form");
+
+    for (i = 0; i < getForm.length; i++) {
+        if (getForm.item(i) == obj.parentNode) {
+            console.log(i+" inside for loop")
+        }
     }
 }
 
@@ -321,7 +351,7 @@ function elementeAbrufen() {
         lz2 + "&lt;/rdf:value&gt;<br>" +
         "&lt;/viva:form&gt;";
 
-    // loop through all user created form-fields
+ 0   // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
