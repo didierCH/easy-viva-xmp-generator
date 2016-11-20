@@ -217,9 +217,19 @@ function neuesFormularfeld() {
 // // /// MOVE INPUT UP AND DOWN
 
 function moveUp(obj) {
-    // var grandParentObj = obj.parentNode;
     var grandParentObj = obj.parentNode.parentNode;
     var getForm = grandParentObj.getElementsByTagName("form");
+
+    // var node = grandParentObj.lastChild;
+    // console.log("class of last child: " + node.className);
+    var node = getForm[1];
+    var list = document.getElementById("formularfelder");
+    list.insertBefore(node, list.children[0]);
+    console.log(list.children[0].nodeName);
+    console.log(grandParentObj.id);
+    console.log(getForm.length + " get Form length");
+
+    // grandParentObj.insertBefore(node, getForm.childNodes[0]);
 
     for (i = 0; i < getForm.length; i++) {
         if (getForm.item(i) == obj.parentNode) {
