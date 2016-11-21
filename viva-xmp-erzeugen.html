@@ -70,7 +70,6 @@
     </div>
 
     <br>
-    <br>
     <button id="buttonXMPdateiErstellen" onclick="elementeAbrufen()">XMP-Datei erstellen</button>
     <br>
     <br>
@@ -143,7 +142,7 @@ function neuesFormularfeld() {
         var form = document.createElement("FORM");
             // form.setAttribute("class", formClassName); // 1.
             form.setAttribute("class", valueNF); // 1.
-            // form.setAttribute("onclick", "moveUp(this)");
+            // form.setAttribute("onclick", "moveUpDown(this)");
 
         // append new formelement with content to div formularfelder
         document.getElementById("formularfelder").appendChild(form);
@@ -159,13 +158,13 @@ function neuesFormularfeld() {
         var moveDownButton = document.createElement("DIV");
             form.appendChild(moveDownButton);
             moveDownButton.setAttribute("class", "moveDownButton");
-            moveDownButton.setAttribute("onclick", "moveUp(this)");
+            moveDownButton.setAttribute("onclick", "moveUpDown(this, +2)");
             moveDownButton.setAttribute("title", "Bewege Feld nach unten");
 
         var moveUpButton = document.createElement("DIV");
             form.appendChild(moveUpButton);
             moveUpButton.setAttribute("class", "moveUpButton");
-            moveUpButton.setAttribute("onclick", "moveUp(this)");
+            moveUpButton.setAttribute("onclick", "moveUpDown(this, -1)");
             moveUpButton.setAttribute("title", "Bewege Feld nach oben");
 
         // create input field
@@ -218,18 +217,26 @@ function neuesFormularfeld() {
 
 // // /// MOVE INPUT UP AND DOWN
 
-function moveUp(obj) {
+function moveUpDown(obj, move) {
     var grandParentObj = obj.parentNode.parentNode;
     var getForm = grandParentObj.getElementsByTagName("form");
+    var getFormLen = getForm.length;
 
-    for (i = 0; i < getForm.length; i++) {
+    console.log("move " + move);
+    console.log("getForm.length " + getForm.length);
+
+    for (i = 0; i < getFormLen; i++) {
         if (getForm.item(i) == obj.parentNode) {
             var actualPos = i;
-            console.log(actualPos + " actualPos")
+            console.log("actualPos " + actualPos);
         }
     }
 
-    grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[actualPos-1]);
+    if (move === 2 && actualPos === getForm.length-1) {
+        grandParentObj.insertBefore(getForm[0], grandParentObj.children[0]);
+    }
+
+    grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[actualPos+move]);
 }
 
 // // /// /// //// //// ///// /////
