@@ -9,7 +9,7 @@
     h1, h2, h3, p, label, input, select, button, option {font-family: arial, sans-serif;}
     h1 {font-size: 24px; margin-bottom: 0;}
     h2 {font-size: 19.2px; font-weight: normal;}
-    h3 {font-size: 19.2px; width: 80%; float: left; margin-bottom: 15px; margin-top: 5px;}
+    h3 {font-size: 19.2px;}
     label {display: inline-block; width: 176px; padding: 3.2px 0px;}
     input {height: 22px; width: 293px; border: none; background-color: #3cbc8d; padding: 4px;}
     select {height: 22px; width: 293px; display: inline-block; border: none; background-color: #3cbc8d;}
@@ -25,9 +25,10 @@
     #xmlAusgabe {float: left; width: 578px;}
     #buttonXMPdateiErstellen {border: 2px solid #000; height: 30px; width: 200px; font-weight: bold; margin-top: 32px;}
     #version {font-size: 10.4px; float: right;}
-    .plusButton {display: inline-block; font-weight: bold; text-align: center; margin: 0; height: 22px; width: 22px; background-color: red; cursor: pointer;}
-    .moveUpButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-bottom: 16px solid green; margin-top: 5px;}
-    .moveDownButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-top: 16px solid green; margin-top: 5px;}
+    .plusButton {display: inline-block; font-weight: bold; text-align: center; margin: 0; height: 22px; width: 22px; background-color: red;}
+    .inputHeader {font-size: 19.2px; width: 80%; float: left; margin-bottom: 15px; margin-top: 5px;}
+    .moveUpButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-bottom: 16px solid green; margin-top: 5px; cursor: pointer;}
+    .moveDownButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-top: 16px solid green; margin-top: 5px; cursor: pointer;}
     </style>
 <head>
 <body>
@@ -152,6 +153,7 @@ function neuesFormularfeld() {
             var headerText = document.createTextNode(h3HeaderTitle); // 2.
             form.appendChild(header);
             header.appendChild(headerText);
+            header.setAttribute("class", "inputHeader");
 
         // create move up/move down buttons
         var moveDownButton = document.createElement("DIV");
@@ -219,13 +221,15 @@ function neuesFormularfeld() {
 function moveUp(obj) {
     var grandParentObj = obj.parentNode.parentNode;
     var getForm = grandParentObj.getElementsByTagName("form");
-    grandParentObj.insertBefore(getForm[1], grandParentObj.children[0]);
 
     for (i = 0; i < getForm.length; i++) {
         if (getForm.item(i) == obj.parentNode) {
-            console.log(i+" inside for loop")
+            var actualPos = i;
+            console.log(actualPos + " actualPos")
         }
     }
+
+    grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[actualPos-1]);
 }
 
 // // /// /// //// //// ///// /////
