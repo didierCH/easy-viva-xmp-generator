@@ -220,23 +220,21 @@ function neuesFormularfeld() {
 function moveUpDown(obj, move) {
     var grandParentObj = obj.parentNode.parentNode;
     var getForm = grandParentObj.getElementsByTagName("form");
-    var getFormLen = getForm.length;
+    // var getFormLen = getForm.length;
 
-    console.log("move " + move);
-    console.log("getForm.length " + getForm.length);
-
-    for (i = 0; i < getFormLen; i++) {
+    for (i = 0; i < getForm.length; i++) {
         if (getForm.item(i) == obj.parentNode) {
             var actualPos = i;
-            console.log("actualPos " + actualPos);
         }
     }
 
     if (move === 2 && actualPos === getForm.length-1) {
-        grandParentObj.insertBefore(getForm[0], grandParentObj.children[0]);
+        // move last input-element to up to first position if button move-down is pressed
+        grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[0]);
+    } else {
+        // move input element up or down.
+        grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[actualPos+move]);
     }
-
-    grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[actualPos+move]);
 }
 
 // // /// /// //// //// ///// /////
