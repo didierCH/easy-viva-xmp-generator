@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <!--
+    MIT License
+
+    Copyright (c) 2016 Didier Clapasson
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Viva XMP-Generator</title>
@@ -208,7 +232,7 @@ function neuesFormularfeld() {
         // append line after new created formelement
         //  var linie = document.createElement("hr");
         //  document.getElementById("formularfelder").appendChild(linie);
-        
+
         // append line after new created formelement
         var linie = document.createElement("hr");
         form.appendChild(linie);
@@ -220,11 +244,11 @@ function neuesFormularfeld() {
 function moveUpDown(obj, move) {
     var grandParentObj = obj.parentNode.parentNode;
     var getForm = grandParentObj.getElementsByTagName("form");
-    // var getFormLen = getForm.length;
+    var actualPos;
 
     for (i = 0; i < getForm.length; i++) {
         if (getForm.item(i) == obj.parentNode) {
-            var actualPos = i;
+            actualPos = i;
         }
     }
 
@@ -271,7 +295,7 @@ function formAppendChild(form, createNewSelect) {
 
 // auswählen des neu zu erstellenden input-elements
 function chooseNewInputSelect(obj, createNewSelect, form) {
-    
+
     var newInputValue = obj.options[obj.selectedIndex].value;
 
     if (newInputValue == "neue Option") {
@@ -292,12 +316,12 @@ function chooseNewInputSelect(obj, createNewSelect, form) {
 // erstelle neues label und neues input-element
 function makeNewInputElement(obj, newInputValue) {
     var makeNewLabel = document.createElement("label");
-    var text = document.createTextNode("viva: "+ newInputValue); 
+    var text = document.createTextNode("viva: "+ newInputValue);
         makeNewLabel.appendChild(text);
     var makeNewInput = document.createElement("input");
         makeNewInput.setAttribute("type", "text");
-        makeNewInput.setAttribute("name", newInputValue); 
-        makeNewInput.setAttribute("value", ""); 
+        makeNewInput.setAttribute("name", newInputValue);
+        makeNewInput.setAttribute("value", "");
 
     // fügt input feld unterhalb des aktuellen ein
         obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
@@ -360,7 +384,7 @@ function elementeAbrufen() {
         lz2 + "&lt;/rdf:value&gt;<br>" +
         "&lt;/viva:form&gt;";
 
- 0   // loop through all user created form-fields
+    // loop through all user created form-fields
     for (i = 0; i < formAbrufen.length; i++) {
         var getClassName = formAbrufen[i].className;
         var inputAbrufen = formAbrufen[i].getElementsByTagName("input");
@@ -387,29 +411,29 @@ function elementeAbrufen() {
                 case "pattern":
                 case "textrows":
                 case "textchars":
-                    xmlVivaType = 
-                        lz10 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    xmlVivaType =
+                        lz10 + "&lt;viva:" + getInputNameValue + "&gt;<span>" +
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>";
                     break;
                 case "label":
                 case "align":
                 case "help":
                 case "description":
-                    xmlVivaTypeValue = 
-                        lz10 + lz2 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    xmlVivaTypeValue =
+                        lz10 + lz2 + "&lt;viva:" + getInputNameValue + "&gt;<span>" +
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>";
                     break;
                 case "title":
-                    xmlVivaTypeOptions = 
-                        lz10 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" + 
-                        lz10 + lz8 + "&lt;viva:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>"; 
+                    xmlVivaTypeOptions =
+                        lz10 + lz6 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
+                        lz10 + lz8 + "&lt;viva:" + getInputNameValue + "&gt;<span>" +
+                        getInputValue + "</span>&lt;/viva:" + getInputNameValue + "&gt;<br>";
                     break;
                 case "value":
-                    xmlVivaTypeOptions = 
-                        lz10 + lz8 + "&lt;rdf:" + getInputNameValue + "&gt;<span>" + 
-                        getInputValue + "</span>&lt;/rdf:" + getInputNameValue + "&gt;<br>" + 
-                        lz10 + lz6 + "&lt;/rdf:li&gt;<br>"; 
+                    xmlVivaTypeOptions =
+                        lz10 + lz8 + "&lt;rdf:" + getInputNameValue + "&gt;<span>" +
+                        getInputValue + "</span>&lt;/rdf:" + getInputNameValue + "&gt;<br>" +
+                        lz10 + lz6 + "&lt;/rdf:li&gt;<br>";
                     break;
                 default:
                     xmlVivaType = "Meine Form hat keine Klasse! <br>";
@@ -425,10 +449,10 @@ function elementeAbrufen() {
         if (xmlVivaContValue === "") {
             xmlVivaValueContainer = "";
         } else if (xmlVivaContOptions !== ""){
-            var xmlVivaLabelInOption = xmlVivaTypeValue; 
+            var xmlVivaLabelInOption = xmlVivaTypeValue;
         } else {
-        xmlVivaValueContainer = 
-                lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
+        xmlVivaValueContainer =
+                lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
                 xmlVivaContValue +
                 lz10 + "&lt;/rdf:value&gt;<br>";
         }
@@ -436,27 +460,27 @@ function elementeAbrufen() {
         if (xmlVivaContOptions === "") {
             xmlVivaOptionsContainer = "";
         } else {
-            xmlVivaOptionsContainer = 
-                    lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" + 
-                    lz10 + lz2 + "&lt;viva:options&gt;<br>" + 
-                    lz10 + lz4 + "&lt;rdf:Seq&gt<br>" + xmlVivaContOptions + 
-                    lz10 + lz4 + "&lt;/rdf:Seq&gt;<br>" + 
+            xmlVivaOptionsContainer =
+                    lz10 + "&lt;rdf:value rdf:parseType=\"Resource\"&gt;<br>" +
+                    lz10 + lz2 + "&lt;viva:options&gt;<br>" +
+                    lz10 + lz4 + "&lt;rdf:Seq&gt<br>" + xmlVivaContOptions +
+                    lz10 + lz4 + "&lt;/rdf:Seq&gt;<br>" +
                     lz10 + lz2 + "&lt;/viva:options&gt<br>" +
                     xmlVivaLabelInOption +
-                    lz10 + "&lt;/rdf:value&gt;<br>"; 
+                    lz10 + "&lt;/rdf:value&gt;<br>";
         }
 
         var inputOutput = xmlVivaContBasic + xmlVivaValueContainer + xmlVivaOptionsContainer;
-        formOutput +=  
+        formOutput +=
                 lz8 + "&lt;rdf:li rdf:parseType=\"Resource\"&gt;<br>" +
                 lz10 + "&lt;viva:type&gt;<span>" + getClassName + "</span>&lt;/viva:type&gt;<br>" +
-                inputOutput + 
+                inputOutput +
                 lz8 + "&lt;/rdf:li&gt;<br>";
     }
 
         inputfieldText = formOutput;
 
-    document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
+    var printOut = document.getElementById("ausgabefeld").innerHTML = headText + inputfieldText + closingText;
 }
 
 </script>
