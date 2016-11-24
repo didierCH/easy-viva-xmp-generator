@@ -1,7 +1,6 @@
 # Viva XMP erzeugen to-do Liste
 
 ## Geplant
-* Entfernen-Button für einzelne Formularfelder
 * Hinzufügen und entfernen von neuen Optionen bei select
 * Optionsfelder bei select nach oben oder unten verschieben
 * Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
@@ -21,6 +20,9 @@
 * Tooltips mit Beschreibung der Funktionen einfügen
 * Erweiterte Hilfe zu den Funktionen einbauen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+
+<del>## V1.5.0
+* <del>Entfernen-Button für einzelne Formularfelder
 
 <del>## V1.4.0
 * <del>Geprüft und verbessert mit JSHint
