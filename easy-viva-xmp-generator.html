@@ -53,6 +53,7 @@
     .inputHeader {font-size: 19.2px; width: 80%; float: left; margin-bottom: 15px; margin-top: 5px;}
     .moveUpButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-bottom: 16px solid green; margin-top: 5px; cursor: pointer;}
     .moveDownButton {height: 0; width: 0; float: right; border-left: 8px solid transparent;border-right: 8px solid transparent; border-top: 16px solid green; margin-top: 5px; cursor: pointer;}
+    .removeButton {height: 16px; width: 16px; float: right; margin-top: 5px; margin-right: 10px; cursor: pointer; background-color: red; text-align: center; font-weight: bold;}
     </style>
 <head>
 <body>
@@ -191,6 +192,15 @@ function neuesFormularfeld() {
             moveUpButton.setAttribute("onclick", "moveUpDown(this, -1)");
             moveUpButton.setAttribute("title", "Bewege Feld nach oben");
 
+        // create remove button
+        var removeButton = document.createElement("DIV");
+        var removeButtonText = document.createTextNode("-");
+            form.appendChild(removeButton);
+            removeButton.appendChild(removeButtonText);
+            removeButton.setAttribute("class", "removeButton");
+            removeButton.setAttribute("title", "Entferne Feld");
+            removeButton.setAttribute("onclick", "removeInput(this)");
+
         // create input field
         for (i = 0; i < inputFields.length; i++) {
                 var inputLabel = document.createElement("label");
@@ -238,6 +248,21 @@ function neuesFormularfeld() {
         form.appendChild(linie);
     }
 }
+
+// // /// REMOVE INPUT
+function removeInput(obj) {
+    var parentObj = obj.parentNode;
+    var grandParentObj = parentObj.parentNode;
+
+    if (confirm("Wollen Sie das Input-Feld wirklich entfernen?")) {
+        grandParentObj.removeChild(parentObj);
+    } else {
+        // do nothing!
+    }
+
+
+}
+
 
 // // /// MOVE INPUT UP AND DOWN
 
