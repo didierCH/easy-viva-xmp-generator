@@ -62,7 +62,6 @@
     <h2>Mit diesem Programm können Viva-XMP Daten für den Formularmodus des Printplus Druckportal erzeugt werden.</h2>
     <hr>
     <div id="formWrapper">
-    <!-- <p>Geben Sie hier Ihre Informationen ein</p> -->
     <div id="headInfo">
     <form id="xmlHead">
     <h3>Head Informationen</h3>
@@ -124,50 +123,40 @@ function neuesFormularfeld() {
 
         switch (valueNF) {
             case "text":
-                // var formClassName = "text"; // 1.
                 h3HeaderTitle = "Textfeld"; // 2.
                 inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
                 inputValue = ["", "", ""]; // 5.
                 break;
             case "hidden":
-                // var formClassName = "hidden";
                 h3HeaderTitle = "Verstecktes Feld";
                 inputFields = ["name", "default"];
                 inputValue = ["", ""];
                 break;
             case "email":
-                // var formClassName = "email";
                 h3HeaderTitle = "E-Mail-Feld";
                 inputFields = ["name", "default", "label", "align"];
                 inputValue = ["", "", "", "left"];
                 break;
             case "textarea":
-                // var formClassName = "textarea";
                 h3HeaderTitle = "Mehrzeiliges Formularfeld";
                 inputFields = ["name", "default", "textrows", "textchars", "label"];
                 inputValue = ["", "", "", "", ""];
                 break;
             case "select":
-                // var formClassName = "select";
                 h3HeaderTitle = "Auswahlliste";
                 inputFields = ["name", "title", "value", "title", "value", "label"];
                 inputValue = ["", "", "", "", "", ""];
                 break;
             case "upload":
-                // var formClassName = "text"; // 1.
                 h3HeaderTitle = "File-Upload"; // 2.
                 inputFields = ["name", "default", "pattern", "label", "help"]; // 3. & 4. (wird auch für das Attribut name verwendet
                 inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."]; // 5.
                 break;
-            // default:
-               // var result = "text";
         }  // end of switch
 
         // create form-element
         var form = document.createElement("FORM");
-            // form.setAttribute("class", formClassName); // 1.
             form.setAttribute("class", valueNF); // 1.
-            // form.setAttribute("onclick", "moveUpDown(this)");
 
         // append new formelement with content to div formularfelder
         document.getElementById("formularfelder").appendChild(form);
@@ -240,10 +229,6 @@ function neuesFormularfeld() {
         }  // end for-loop to create input-field
 
         // append line after new created formelement
-        //  var linie = document.createElement("hr");
-        //  document.getElementById("formularfelder").appendChild(linie);
-
-        // append line after new created formelement
         var linie = document.createElement("hr");
         form.appendChild(linie);
     }
@@ -310,14 +295,6 @@ function createNewInput(form, addInput) {
 
 }  // end of function createNewInput
 
-/*
-function formAppendChild(form, createNewSelect) {
-    form.appendChild(createNewSelect);
-    // form.insertBefore(createNewSelect, form.nextSibling);
-    // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
-*/
-
 // auswählen des neu zu erstellenden input-elements
 function chooseNewInputSelect(obj, createNewSelect, form) {
 
@@ -327,9 +304,6 @@ function chooseNewInputSelect(obj, createNewSelect, form) {
         makeNewInputElement(obj, "value");
         makeNewInputElement(obj, "title");
         obj.parentNode.removeChild(obj);
-        // formAppendChild(newNode, referenceNode);
-        // obj.parentNode.insertBefore(createNewSelect, obj.nextSibling);
-        // form.appendChild(createNewSelect);
     } else {
         // erstelle benötigte html-elemente
         makeNewInputElement(obj, newInputValue);
@@ -509,7 +483,5 @@ function elementeAbrufen() {
 }
 
 </script>
-
-
 
 </body></html>
