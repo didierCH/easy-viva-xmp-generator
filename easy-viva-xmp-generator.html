@@ -100,7 +100,7 @@
     </div> <!-- end of form-wrapper -->
 
     <div id="xmlAusgabe">
-    <!-- <p>Clipboard für CSV-File zur Vorlage</p> -->
+    <!-- Clipboard -->
     <textarea placeholder="Clipboard ..." rows="3"></textarea>
     <h3>XMP-Datei:</h3>
     <pre id="ausgabefeld"></pre>
@@ -109,9 +109,11 @@
     </div> <!-- end of wrapper -->
 
 <script type="text/javascript">
+// // // CREATE FORM-FIELDS
+
 // choose which form field you want to create
 function neuesFormularfeld() {
-    var valueNF = document.getElementById("newValueSortOf").value;
+    var valueNF = document.getElementById("newValueSortOf").value; // 1.
 
     determineNewFormfield(valueNF);
 
@@ -124,7 +126,7 @@ function neuesFormularfeld() {
         switch (valueNF) {
             case "text":
                 h3HeaderTitle = "Textfeld"; // 2.
-                inputFields = ["name", "default", "label"]; // 3. & 4. (wird auch für das Attribut name verwendet
+                inputFields = ["name", "default", "label"]; // 3. & 4. (is used for attribut name too)
                 inputValue = ["", "", ""]; // 5.
                 break;
             case "hidden":
@@ -148,9 +150,9 @@ function neuesFormularfeld() {
                 inputValue = ["", "", "", "", "", ""];
                 break;
             case "upload":
-                h3HeaderTitle = "File-Upload"; // 2.
-                inputFields = ["name", "default", "pattern", "label", "help"]; // 3. & 4. (wird auch für das Attribut name verwendet
-                inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."]; // 5.
+                h3HeaderTitle = "File-Upload";
+                inputFields = ["name", "default", "pattern", "label", "help"];
+                inputValue = ["", "", "jpg|png|gif", "", "Unterstützt werden die Dateiformate jpg, png, gif."];
                 break;
         }  // end of switch
 
@@ -202,11 +204,10 @@ function neuesFormularfeld() {
                     formName.setAttribute("value", inputValue[i]); // 5.
                     form.appendChild(formName);
 
-                // auswahl-bedingungen für das neue select feld
+                // set condition for the kind of the new select-field
                 var addInput;
                 if (inputFields[i] == "default") {
-                    // die benötigten input-felder werden aufgelistet, erstes element ist leer um onchange
-                    // zu ermöglichen
+                    // list all needed input-fields, first element is empty to enable onchange
                     if (valueNF == "text" || valueNF == "email" || valueNF == "textarea") {
                         addInput = ["","placeholder", "pattern"];
                         createNewInput(form, addInput);
@@ -223,9 +224,10 @@ function neuesFormularfeld() {
                 }
 
 
-            // erzeuge umbruch-element br
+            // create br-element
             var br = document.createElement("br");
                 form.appendChild(br);
+
         }  // end for-loop to create input-field
 
         // append line after new created formelement
@@ -234,7 +236,9 @@ function neuesFormularfeld() {
     }
 }
 
+
 // // /// REMOVE INPUT
+
 function removeInput(obj) {
     var parentObj = obj.parentNode;
     var grandParentObj = parentObj.parentNode;
@@ -244,12 +248,10 @@ function removeInput(obj) {
     } else {
         // do nothing!
     }
-
-
 }
 
 
-// // /// MOVE INPUT UP AND DOWN
+// // // MOVE INPUT UP AND DOWN
 
 function moveUpDown(obj, move) {
     var grandParentObj = obj.parentNode.parentNode;
@@ -263,7 +265,7 @@ function moveUpDown(obj, move) {
     }
 
     if (move === 2 && actualPos === getForm.length-1) {
-        // move last input-element to up to first position if button move-down is pressed
+        // move last input-element up to first position if button move-down is pressed
         grandParentObj.insertBefore(getForm[actualPos], grandParentObj.children[0]);
     } else {
         // move input element up or down.
@@ -271,10 +273,10 @@ function moveUpDown(obj, move) {
     }
 }
 
-// // /// /// //// //// ///// /////
-// Funktionen zum Erstellen des Select zur Auswahl von neuen Inputfeldern
 
-// erstelle select mit options zum auswählen von neuen input-feldern
+// // // FUNCTIONS TO CREATE CHOOSER FOR OPTIONAL INPUT-FIELDS
+
+// create select with option-fields to create a chooser to create new input-fields
 function createNewInput(form, addInput) {
 
     var createNewSelect = document.createElement("select");
@@ -286,33 +288,33 @@ function createNewInput(form, addInput) {
 
             createNewSelect.appendChild(createNewOption);
             createNewSelect.setAttribute("class", "plusButton");
-            // erstes option-element wird ausgeblendet
+            // hidde first option-element
             createNewSelect.firstChild.style.display = "none";
     }  // end of j-loop
 
     form.appendChild(createNewSelect);
-    // formAppendChild(form, createNewSelect);
 
 }  // end of function createNewInput
 
-// auswählen des neu zu erstellenden input-elements
+// choose kind of input element
 function chooseNewInputSelect(obj, createNewSelect, form) {
 
     var newInputValue = obj.options[obj.selectedIndex].value;
 
+    // make new option for select-form
     if (newInputValue == "neue Option") {
         makeNewInputElement(obj, "value");
         makeNewInputElement(obj, "title");
         obj.parentNode.removeChild(obj);
     } else {
-        // erstelle benötigte html-elemente
+        // make new option for all other form-fields
         makeNewInputElement(obj, newInputValue);
         removeElements(obj);
     }
 
-}  // ende chooseNewInputSelect
+}  // ende of chooseNewInputSelect
 
-// erstelle neues label und neues input-element
+// create new label and new input-field
 function makeNewInputElement(obj, newInputValue) {
     var makeNewLabel = document.createElement("label");
     var text = document.createTextNode("viva: "+ newInputValue);
@@ -322,13 +324,13 @@ function makeNewInputElement(obj, newInputValue) {
         makeNewInput.setAttribute("name", newInputValue);
         makeNewInput.setAttribute("value", "");
 
-    // fügt input feld unterhalb des aktuellen ein
+        // apend input-field below (this)
         obj.parentNode.insertBefore(makeNewInput, obj.nextSibling);
         obj.parentNode.insertBefore(makeNewLabel, obj.nextSibling);
-}  // ende makeNewInputElement
+}  // end of makeNewInputElement
 
 
-// löschen des aktuell ausgewählten input-elements, beim letzten element wird das ganze select gelöscht
+// delete actual option element, delete whole select if only one option exist
 function removeElements(obj) {
     var getChildrenLen = obj.children.length;
     if (getChildrenLen <= 2) {
@@ -340,14 +342,13 @@ function removeElements(obj) {
     }  // ende if else
 }
 
-// Ende der Funktionen zum Erstellen der Input-Felder
-// // /// /// //// //// ///// /////
 
-// Elemente abrufen
+// // // WRITE XML-OUTPUT
+
+// call elements
 function elementeAbrufen() {
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
-    //var inputOutput = "";
     var formOutput = "";
     var lz2 = "&#32;&#32;";
     var lz4 = lz2 + lz2;
@@ -484,4 +485,5 @@ function elementeAbrufen() {
 
 </script>
 
-</body></html>
+</body>
+</html>
