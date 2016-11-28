@@ -206,19 +206,22 @@ function neuesFormularfeld() {
 
                 // set condition for the kind of the new select-field
                 var addInput;
-                if (inputFields[i] == "default") {
+                if (inputFields[i] === "default") {
                     // list all needed input-fields, first element is empty to enable onchange
-                    if (valueNF == "text" || valueNF == "email" || valueNF == "textarea") {
+                    if (valueNF === "text" || valueNF === "email" || valueNF === "textarea") {
                         addInput = ["","placeholder", "pattern"];
                         createNewInput(form, addInput);
-                    } else if (valueNF == "upload") {
+                    } else if (valueNF === "upload") {
                         addInput = ["", "placeholder"];
                         createNewInput(form, addInput);
                     }
-                } else if (inputFields[i] == "label") {
-                    addInput = ["", "help"];
-                    createNewInput(form, addInput);
-                } else if (inputFields[i] == "value") {
+                } else if (inputFields[i] === "label") {
+                    // if (valueNF === "text" || valueNF === "email" || valueNF === "textarea" || valueNF === "select") {
+                    if (valueNF !== "upload") {
+                        addInput = ["", "help"];
+                        createNewInput(form, addInput);
+                    }
+                } else if (inputFields[i] === "value") {
                     addInput = ["", "neue Option"];
                     createNewInput(form, addInput);
                 }
