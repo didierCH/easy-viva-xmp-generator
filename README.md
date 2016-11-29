@@ -1,7 +1,7 @@
 # Easy Viva XMP-Generator
-XML-File Generator zum Erstellen von XMP-Dateien in Viva-Publisher als Schnittstelle zum Printplus-Druckportal
+XML/XMP-File Generator zum Erstellen von XMP-Dateien in Viva-Publisher als Schnittstelle zum Printplus-Druckportal
 
-XML-File generator for the Viva Publisher to use with the Printplus Druckportal  
+XML/XMP-File generator for the Viva Publisher to use with the Printplus Druckportal  
 
 ## Funktionen
 
@@ -9,10 +9,11 @@ XML-File generator for the Viva Publisher to use with the Printplus Druckportal
 * Button zum entfernen von Input-Feld
 
 #### Version 1.5.2
-* Don't show select-option "help" in file-upload field
+* Zeige "help" Option in File-Upload nicht an
 
 #### Version 1.5.1
 * Clean up and translate comments to english
+* Code aufräumen und Kommentare nach English übersetzen
 
 ### Version 1.4.0
 * Formularfelder nach oben oder unten verschieben
