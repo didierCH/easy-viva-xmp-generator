@@ -12,7 +12,6 @@ XML/XMP-File generator for the Viva Publisher to use with the Printplus Druckpor
 * Zeige "help" Option in File-Upload nicht an
 
 #### Version 1.5.1
-* Clean up and translate comments to english
 * Code aufräumen und Kommentare nach English übersetzen
 
 ### Version 1.4.0
