@@ -9,8 +9,8 @@ Um sofort zu starten, gehe zu: https://didierch.github.io/easy-viva-xmp-generato
 ### Lokale installation
 Lade das Repository mit dem Button "Clone or download" als Zip-File auf Deinen Computer. Entpacke das Zip und öffne das File "index.html" mit einem Browser.
 
-### Browser kompatibilität
-Entwickelt und getested mit Firefox, getested mit Chrome und Internet Explorer (ab Version 9) und Opera.
+### Browser Kompatibilität
+Entwickelt und getestet mit Firefox, getestet mit Chrome und Internet Explorer (ab Version 9) und Opera.
 Funktioniert mit Einschränkungen auch unter Internet Explorer 7 und 8.
 
 ## Funktionen
