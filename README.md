@@ -1,7 +1,17 @@
 # Easy Viva XMP-Generator
-XML/XMP-File Generator zum Erstellen von XMP-Dateien in Viva-Publisher als Schnittstelle zum Printplus-Druckportal
-
+XML/XMP-File Generator zum Erstellen von XMP-Dateien in Viva-Publisher als Schnittstelle zum Printplus-Druckportal  
 XML/XMP-File generator for the Viva Publisher to use with the Printplus Druckportal  
+
+## Bedienungsanleitung
+### Direkter Link
+Um sofort zu starten, gehe zu: https://didierch.github.io/easy-viva-xmp-generator/
+
+### Lokale installation
+Lade das Repository mit dem Button "Clone or download" als Zip-File auf Deinen Computer. Entpacke das Zip und öffne das File "index.html" mit einem Browser.
+
+### Browser kompatibilität
+Entwickelt und getested mit Firefox, getested mit Chrome und Internet Explorer (ab Version 9) und Opera.
+Funktioniert mit Einschränkungen auch unter Internet Explorer 7 und 8.
 
 ## Funktionen
 
