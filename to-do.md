@@ -1,7 +1,6 @@
 # Viva XMP erzeugen to-do Liste
 
 ## Geplant
-* Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 * Hinzufügen und entfernen von neuen Optionen bei select
 * Optionsfelder bei select nach oben oder unten verschieben
 * Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
@@ -21,6 +20,9 @@
 * Tooltips mit Beschreibung der Funktionen einfügen
 * Erweiterte Hilfe zu den Funktionen einbauen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+
+## V.1.6.0
+* <del>Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 
 <del>## V1.5.0
 * <del>Entfernen-Button für einzelne Formularfelder
