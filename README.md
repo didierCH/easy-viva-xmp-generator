@@ -15,6 +15,9 @@ Funktioniert mit Einschränkungen auch unter Internet Explorer 7 und 8.
 
 ## Funktionen
 
+### Version 1.6.0
+* Möglichkeit, das Clipboard "schweben" zu lassen, um den Zugriff darauf bei vielen Input-Feldern zu vereinfachen
+
 ### Version 1.5.0
 * Button zum entfernen von Input-Feld
 
