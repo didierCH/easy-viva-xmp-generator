@@ -3,16 +3,16 @@
 ## Geplant
 * Hinzufügen und entfernen von neuen Optionen bei select
 * Optionsfelder bei select nach oben oder unten verschieben
-* Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
 * Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
+* Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
+
 
 ### In Erwägung ziehen
+* Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
 * Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
 * Pre-Box durch Textbox ersetzten, damit vor dem Kopieren Änderungen durchgeführt werden können
 * Button für XML-Ausgabefeld erstellen, mit dem der ganze Text markiert werden kann zum einfacheren kopieren
-* Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 * Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
-* Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
 
 ### Design
 * Felder title und value bei den Inputfeldern für select optisch gruppieren
@@ -20,6 +20,9 @@
 * Tooltips mit Beschreibung der Funktionen einfügen
 * Erweiterte Hilfe zu den Funktionen einbauen
 * Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+
+## V.1.6.0
+* <del>Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
 
 <del>## V1.5.0
 * <del>Entfernen-Button für einzelne Formularfelder
