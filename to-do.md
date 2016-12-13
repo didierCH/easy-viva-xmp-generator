@@ -1,25 +1,24 @@
 # Viva XMP erzeugen to-do Liste
 
 ## Geplant
-* Hinzufügen und entfernen von neuen Optionen bei select
-* Optionsfelder bei select nach oben oder unten verschieben
-* Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
-* Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen
+* <del> Issue auf GitHub eröffnet: Hinzufügen und entfernen von neuen Optionen bei select
+* <del> Issue auf GitHub eröffnet: Importfunktion für CSV-Files zum automatischen erstellen der Input-Felder
+* <del> Kopiere in Zwischenablage-Befehl zu pre-Box hinzufügen: Nicht möglich in purem JavaScript (benötigt Flash)n
 
 
 ### In Erwägung ziehen
-* Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
-* Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern
-* Pre-Box durch Textbox ersetzten, damit vor dem Kopieren Änderungen durchgeführt werden können
-* Button für XML-Ausgabefeld erstellen, mit dem der ganze Text markiert werden kann zum einfacheren kopieren
-* Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
+* <del> Issue auf GitHub eröffnet: Ändere Mauszeiger beim Überfahren von Buttons (Formularfelder hinzufügen, XMP-Datei erzeugen)
+* <del>Inputfelder, die Ausgefüllt werden müssen, zwingend machen mit Stern: zu starke/unnötige Benutzereinschränkung.
+* <del>Pre-Box durch Textbox ersetzten, damit vor dem Kopieren Änderungen durchgeführt werden können: Ungeignet, da Ergebnis immer wieder verworfen wird. Besser der User macht Änderungen in einem Text-Editor oder in Viva selber
+* <del> Issue auf GitHub eröffnet: Button für XML-Ausgabefeld erstellen, mit dem der ganze Text markiert werden kann zum einfacheren kopieren
+* <del> Issue auf GitHub eröffnet: Browserfenster soll beim Hinzufügen von Formularfeldern automatisch nach unten scrollen, damit die letzten Formularfelder immer sichtbar sind
 
 ### Design
-* Felder title und value bei den Inputfeldern für select optisch gruppieren
-* Input-Hinzufügen Button besser gestalten (evtl. wie default in Chrome oder als Plus-Button)
-* Tooltips mit Beschreibung der Funktionen einfügen
-* Erweiterte Hilfe zu den Funktionen einbauen
-* Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
+* <del> Issue auf GitHub eröffnet: Felder title und value bei den Inputfeldern für select optisch gruppieren
+* <del> Input-Hinzufügen Button besser gestalten (evtl. wie default in Chrome oder als Plus-Button): entscheid dagegen (cursor: pointer reicht)
+* <del> Issue auf GitHub eröffnet: Tooltips mit Beschreibung der Funktionen einfügen
+* <del> Issue auf GitHub eröffnet: Erweiterte Hilfe zu den Funktionen einbauen
+* <del> Button "XMP-Datei erstellen" zu "XMP-Datei aktualisieren" wechseln wenn bereits Datei erstellt wurde
 
 ## V.1.6.0
 * <del>Clipboard und XMP-Ausgabe als fixed-element definieren, damit diese beim Hinzufügen von neuen Formularfeldern sichtbar bleiben
