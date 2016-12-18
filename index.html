@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Viva XMP-Generator</title>
+    
     <!--
     MIT License
 
@@ -25,9 +29,6 @@
     SOFTWARE.
     -->
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Viva XMP-Generator</title>
     <style>
     * {box-sizing: border-box;}
     h1, h2, h3, p, label, input, select, button, option {font-family: arial, sans-serif;}
@@ -78,7 +79,7 @@
         <label>viva:previewWidth: </label> <input type="text" id="inputVivaPreviewWidth" value="680"><br>
         <label>viva:previewHeight: </label> <input type="text" id="inputVivaPreviewHeight" value=""><br>
         <label>viva:formWidth: </label> <input type="text" id="inputVivaFormWidth" value="500"><br>
-        <label>viva:productDescription: </label> <input type="text" id="inputVivaProductDescription" value="" placeholder="$Name.Vorname$ $Name.Name$"><br>
+        <label>viva:productDescription: </label> <input type="text" id="inputVivaProductDescription" value="$Name.Vorname$ $Name.Name$" placeholder=""><br>
     </form>
     <hr>
     </div>
@@ -124,7 +125,6 @@ function toggleClipboard() {
     var toggleText = document.getElementById("clipboardToggle");
     toggleClass.className = (toggleClass.className === "clipboardTop") ? "clipboardFix" : "clipboardTop";
     toggleText.innerHTML = (toggleText.innerHTML === "Schweben") ? "Oben anheften" : "Schweben";
-
 }
 
 // // // CREATE FORM-FIELDS
