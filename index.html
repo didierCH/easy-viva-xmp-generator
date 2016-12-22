@@ -368,6 +368,14 @@ function removeElements(obj) {
 
 // call elements
 function elementeAbrufen() {
+
+    // change text in button 'XMP-Datei erstellen'
+    var getButtonXMPdateiErstellen = document.getElementById("buttonXMPdateiErstellen");
+    console.log(getButtonXMPdateiErstellen);
+    getButtonXMPdateiErstellen.innerHTML = "XMP-Datei aktualisieren";
+    console.log(getButtonXMPdateiErstellen);
+
+    // get input-information and generate XMP-Output
     var formAbrufen = document.getElementById("formularfelder").getElementsByTagName("form");
     var inputfieldText = "";
     var formOutput = "";
