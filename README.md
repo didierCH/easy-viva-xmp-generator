@@ -15,6 +15,13 @@ Funktioniert mit Einschränkungen auch unter Internet Explorer 7 und 8.
 
 ## Change-Log
 
+Version 1.6.1
+* Diverse Verbesserungen
+* * Beim Überfahren von Buttons wechselt der Mauszeiger (Issue #18)
+* * Button 'XMP-Datei erstellen' wechselt zu 'XMP-Datei aktualisieren' (Issue #24)
+* * Browserfenster scrollt automatisch nach unten wenn neues Input-Feld erstellt wird (Issue #20)
+* * Viva Product Description '$Name.Name$ $Name.Vorname$ von Placeholder zu Default geändert (Issue #12)
+
 Version 1.6.0
 * Möglichkeit, das Clipboard "schweben" zu lassen, um den Zugriff darauf bei vielen Input-Feldern zu vereinfachen
 
